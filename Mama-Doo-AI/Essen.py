@@ -2,7 +2,7 @@ import Zutaten
 import os
 import csv
 class Essen:
-    def __init__(self, name, rating, satt, difficulty, zutaten, wann, tm, MamaBenötigt, addOns=None):
+    def __init__(self, name, rating, satt, difficulty, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None):
         self.name = name
         self.rating = rating
         self.satt = satt
@@ -12,6 +12,7 @@ class Essen:
         self.wann = wann
         self.thermomix = tm 
         self.mamaBenötigt = MamaBenötigt
+        self.extraInfo = extraInfo
 
 
 alleGerichte = []
@@ -35,16 +36,22 @@ def read_configurations(filename):
                     zutatenListe = []
                     tm = parts[5].strip().lower()
                     mb = parts[6].strip().lower()
-                    for i in range(7, len(parts)):
+                    extraInfo = parts[7].strip().lower()
+                    for i in range(8, len(parts)):
                         word = parts[i].strip().lower()
                         zutatenListe.append(word)
                 
                     acutalZutatenListe = []
                     for zutat_name in zutatenListe:
-                        zutat = getattr(zutatenManager, zutat_name.strip())
-                        acutalZutatenListe.append(zutat)
+                        try:
+                            zutat = getattr(zutatenManager, zutat_name.strip())
+                            acutalZutatenListe.append(zutat)
+                        except:
+                            print()
+                            print("Zutat", zutat_name, "does not exist.")
+                            exit()
                     
-                    essen = Essen(name, rating, satt, difficulty, acutalZutatenListe, wann, tm, mb)
+                    essen = Essen(name, rating, satt, difficulty, acutalZutatenListe, wann, tm, mb, extraInfo)
                     alleGerichte.append(essen)
 
     except FileNotFoundError:
@@ -57,6 +64,7 @@ script_dir = os.path.dirname(__file__)
 filename = os.path.join(script_dir, 'config.txt')
 read_configurations(filename)
 
+
 for gericht in alleGerichte:
     print(f"Name: {gericht.name}")
     print(f"Bewertung: {gericht.rating}")
@@ -66,6 +74,7 @@ for gericht in alleGerichte:
     print(f"Wann: {gericht.wann}")
     print(f"Thermomix: " + gericht.thermomix)
     print(f"Mama benötigt: " + gericht.thermomix)
+    print(f"Extra info: " + gericht.extraInfo)
     print(f"")
 
 

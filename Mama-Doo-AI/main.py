@@ -4,10 +4,21 @@ import Essen, Zutaten
 
 class MamaDooAi():
     def __init__(self):
-        self.alleGerichte = []
-        self.alleZutaten = []
-        self.vorhandeneZutaten = []
-    
+        self.alleGerichte = Essen.alleGerichte
+        
+
+        self.nichtVorhandeneZutate = [zutatenManager.kartoffeln]
+        self.loswerdeZutaten = []
+        for zutat in self.nichtVorhandeneZutate:
+            zutat.istVorhanden = -1
+
+        self.possibleGerichte = []
+        for gericht in self.possibleGerichte:
+            if self.canEssenBeMade(gericht):
+                self.possibleGerichte.append(gericht)
+        for pg in self.possibleGerichte:
+            print(pg.name)
+
     def evaluate(self):
         return []
     
@@ -16,7 +27,7 @@ class MamaDooAi():
 
     def canEssenBeMade(self, essen):
         for zutat in essen.zutaten:
-            if not zutat in self.vorhandeneZutaten:
+            if zutat.istVorhanden == -1:
                 return False
             
         return True

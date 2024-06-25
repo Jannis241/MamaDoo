@@ -1,10 +1,17 @@
-# name , Bewertung, Sättigkeit, Schwierigkeit, Wann, Thermomix, Mama benötigt, Zutat 1, Zutat 2, Zutat 3...
+#  name ,  Bewertung,       Sättigkeit,       Schwierigkeit,      Wann,       Thermomix,      Mama benötigt,   
+#   extra info, Zutat 1, Zutat 2, Zutat 3...
 
 ###
 # !!! Leerzeichen IMMER mit _ ersetzten ---> chicken nuggets = chicken_nuggets !!!
 ###
 
 
-rührei mit speck, 8.5, 10, 3, abends, nein, nein, eier, speck, milch
+rührei mit speck, 8.5, 10, 3, abends, nein, nein, - ,eier, speck, milch
+spiegel ei mit Bratkartoffeln, 3.5, 7, 5, beides, nein, ja, - , eier, kartoffeln
+chicken nuggets mit kartoffel püree, 9, 10, 6, immer, ja, ja,fufu ist lecker,kartoffeln, chicken_nuggets
+Fischstäbchen / lachs mit Kartoffelpüree, 8, 9.5, 4, lieber abends ,ja, nein, - ,fischstäbchen, karToffeln
+Fertig Pizza, 10, 10, 0, Immer, Nein, Nein, sehr lecker, fertig_pizza
+Selbst gemachte Pizza, 6.5, 8.5, 8,  eher Abends, nein, ja, Jannis Bewertung: 4 -> Jesko Bewertung: 9, ananas, zwiebeln, käse, salami, hefe, milch, tomaten_soße, salz, zucker
+spaghetti bolognese, 8.5, 5.5, 5, immer, ja, nein, Es kommt sehr auf die Soße drauf an (auf keinen Fall die orangene nehmen) es kann von 6-8.5/10 gehen, spaghetti, hackfleisch, tomaten_soße
 
-chicken nuggets mit kartoffel püree, 9, 10, 6, immer, ja, ja, karToffeln, chicken_nuggets
+
