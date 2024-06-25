@@ -1,6 +1,6 @@
 class Manager():
     def __init__(self) -> None:
-        self.ei = Zutat("ei")
+        self.eier = Zutat("eier")
         self.mehl = Zutat("mehl")
         self.milch = Zutat("milch")
         self.salz = Zutat("salz")
