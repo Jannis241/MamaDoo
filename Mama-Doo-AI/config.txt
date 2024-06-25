@@ -1,1 +1,10 @@
-rührei mit speck, 8.5, 10, 3, abends, eier, speck, milch
+# name , Bewertung, Sättigkeit, Schwierigkeit, Wann, Thermomix, Mama benötigt, Zutat 1, Zutat 2, Zutat 3...
+
+###
+# !!! Leerzeichen IMMER mit _ ersetzten ---> chicken nuggets = chicken_nuggets !!!
+###
+
+
+rührei mit speck, 8.5, 10, 3, abends, nein, nein, eier, speck, milch
+
+chicken nuggets mit kartoffel püree, 9, 10, 6, immer, ja, ja, karToffeln, chicken_nuggets

@@ -2,7 +2,7 @@ import Zutaten
 import os
 import csv
 class Essen:
-    def __init__(self, name, rating, satt, difficulty, zutaten, wann, addOns=None):
+    def __init__(self, name, rating, satt, difficulty, zutaten, wann, tm, MamaBenötigt, addOns=None):
         self.name = name
         self.rating = rating
         self.satt = satt
@@ -10,6 +10,8 @@ class Essen:
         self.zutaten = zutaten
         self.addOns = addOns
         self.wann = wann
+        self.thermomix = tm 
+        self.mamaBenötigt = MamaBenötigt
 
 
 alleGerichte = []
@@ -22,7 +24,7 @@ def read_configurations(filename):
         with open(filename, 'r', encoding='utf-8') as file:
             for line in file:
                 line = line.strip()
-                if line:
+                if line and line[0] != "#":
                     parts = line.split(',')
                     
                     name = parts[0].strip().lower()
@@ -31,7 +33,9 @@ def read_configurations(filename):
                     difficulty = float(parts[3].strip())
                     wann = parts[4].strip().lower()
                     zutatenListe = []
-                    for i in range(5, len(parts)):
+                    tm = parts[5].strip().lower()
+                    mb = parts[6].strip().lower()
+                    for i in range(7, len(parts)):
                         word = parts[i].strip().lower()
                         zutatenListe.append(word)
                 
@@ -40,7 +44,7 @@ def read_configurations(filename):
                         zutat = getattr(zutatenManager, zutat_name.strip())
                         acutalZutatenListe.append(zutat)
                     
-                    essen = Essen(name, rating, satt, difficulty, acutalZutatenListe, wann)
+                    essen = Essen(name, rating, satt, difficulty, acutalZutatenListe, wann, tm, mb)
                     alleGerichte.append(essen)
 
     except FileNotFoundError:
@@ -60,7 +64,9 @@ for gericht in alleGerichte:
     print(f"Schwierigkeit: {gericht.difficulty}")
     print(f"Zutaten: {[zutat.name + ": " + str(zutat.istVorhanden) for zutat in gericht.zutaten]}")
     print(f"Wann: {gericht.wann}")
-    print()
+    print(f"Thermomix: " + gericht.thermomix)
+    print(f"Mama benötigt: " + gericht.thermomix)
+    print(f"")
 
 
 

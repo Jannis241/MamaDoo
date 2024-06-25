@@ -1,6 +1,7 @@
 class Manager():
     def __init__(self) -> None:
         self.eier = Zutat("eier")
+        self.eier.istVorhanden = -1
         self.mehl = Zutat("mehl")
         self.milch = Zutat("milch")
         self.salz = Zutat("salz")
@@ -44,6 +45,7 @@ class Manager():
         self.mören = Zutat("mören")
         self.wurst = Zutat("wurst")
         self.chili_con_carne = Zutat("chili_con_carne")
+        self.chicken_nuggets = Zutat("chicken_nuggets")
 
 
 
