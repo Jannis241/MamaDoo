@@ -1,0 +1,2 @@
+rührei mit speck, 8.5, 10, 3, [hallo, fufu, dede, salz]
+wraps, 9, 7, 5, [wraps, soße, fleich]
