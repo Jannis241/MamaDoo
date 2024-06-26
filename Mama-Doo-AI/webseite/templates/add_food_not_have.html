@@ -1,55 +1,55 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     <title>Lebensmittel hinzufügen, die ich nicht habe</title>
-  </head>
-  <body>
+</head>
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">My Flask App</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich nicht habe</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich habe</a>
-          </li>
-        </ul>
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Submit</button>
-      </div>
+        <a class="navbar-brand" href="#">My Flask App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich nicht habe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich habe</a>
+                </li>
+            </ul>
+        </div>
+        <form action="/submit" method="post">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </nav>
     <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h1>Lebensmittel hinzufügen, die ich nicht habe</h1>
-          <p class="lead">Hier können Sie Lebensmittel hinzufügen, die Sie nicht haben.</p>
-          <form method="post" action="/add-food-not-have">
+        <h1>Lebensmittel hinzufügen, die ich nicht habe</h1>
+        <form action="/add-food-not-have" method="post">
             <div class="form-group">
-              <input type="text" class="form-control" name="food" placeholder="Lebensmittel suchen">
+                <label for="food">Lebensmittel</label>
+                <input type="text" class="form-control" id="food" name="food" required>
             </div>
             <button type="submit" class="btn btn-primary">Hinzufügen</button>
-          </form>
-          <h2 class="mt-5">Bereits hinzugefügte Lebensmittel:</h2>
-          <ul class="list-group mt-3">
+        </form>
+        {% if foods_not_have %}
+        <h2 class="mt-5">Bereits hinzugefügt:</h2>
+        <ul class="list-group">
             {% for food in foods_not_have %}
-              <li class="list-group-item">{{ food }}</li>
+                <li class="list-group-item">{{ food }}</li>
             {% endfor %}
-          </ul>
-        </div>
-      </div>
+        </ul>
+        {% endif %}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>

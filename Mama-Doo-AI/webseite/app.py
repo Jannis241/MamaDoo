@@ -27,7 +27,9 @@ def add_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    # Hier könntest du die eingegebenen Daten verarbeiten oder speichern
+    global foods_have, foods_not_have
+    foods_have = []
+    foods_not_have = []
     return redirect(url_for('confirmation'))
 
 @app.route('/confirmation')
