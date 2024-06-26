@@ -25,5 +25,10 @@ def add_food_have():
             foods_have.append(food)
     return render_template('add_food_have.html', foods_have=foods_have)
 
+@app.route('/submit', methods=['POST'])
+def submit():
+    # Verarbeite hier die Daten, die vom Formular gesendet werden
+    return render_template('submit.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
