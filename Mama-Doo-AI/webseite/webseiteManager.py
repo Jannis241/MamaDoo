@@ -87,6 +87,7 @@ def confirmation():
     # alles umbenennen
     # filter ob mittags oder abends 
     # auf raspberry pi laufen lassen
+    # extra Infos alle adden und bewertungen usw
     return render_template('submit.html')
 
 def startApp():

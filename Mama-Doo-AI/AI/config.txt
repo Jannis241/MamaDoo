@@ -13,5 +13,21 @@ Fischstäbchen / lachs mit Kartoffelpüree, 8, 9.5, 4, lieber abends ,ja, nein, 
 Fertig Pizza, 10, 10, 0, Immer, Nein, Nein, sehr lecker, fertigpizza
 Selbst gemachte Pizza, 6.5, 8.5, 8,  eher Abends, nein, ja, Jannis Bewertung: 4 -> Jesko Bewertung: 9, ananas, zwiebeln, käse, salami, hefe, milch, tomatensoße, salz, zucker
 spaghetti bolognese, 8.5, 5.5, 5, immer, ja, nein, Es kommt sehr auf die Soße drauf an (auf keinen Fall die orangene nehmen) es kann von 6-8.5/10 gehen, spaghetti, hackfleisch, tomatensoße
-
-
+Wraps, 7, 6, 4, beides, nein, nein, -, wraps, hähnchenfleisch, salat, tomaten, gewürze, zwiebeln
+Reis mit Hähnchenfleisch, 8, 8, 5, beides, nein, nein, - , reis, hähnchenfleisch
+burger, 8, 9, 4, eher Mittag, nein, ja, -, bürgerbrötchen, hackfleisch, käse, salat, tomaten, zwiebeln, gurken, ketchup, mayo
+Nudel Salat mit Fleisch, 7, 7, 3, beides, nein, ja, -, nudeln, schinken, salatcreme, gewürze, salzgurken, käse, paprika
+kartoffelecken, 6, 5, 3, eher Abend, nein, nein, -, kartoffeln, öl, salz, gewürze
+auflauf, 8, 7, 5, eher Abend, nein, ja, -, nudeln, käse, gewürze, hackfleisch
+mörengemüse, 6, 4, 2, beides, nein, nein, -,möhren, butter, gewürze, kartoffeln
+kaiserschmarn, 9, 8, 6, eher Mittag, nein, ja, -, mehl, milch, eier, zucker, butter, puderzucker, apfelmus
+crepes, 8, 6, 4, beides, nein, nein, -,mehl, milch, eier, zucker, nutella
+milchreis, 7, 7, 3, eher Mittag, ja, ja, -, milch, milchreis, zucker, zimt
+grießbrei, 6, 6, 3, eher Mittag, ja, ja, -,milch, grieß, zucker, zimt
+pizzabrötchen, 7, 6, 3, eher Mittag, nein, nein, -,brötchen, salami, käse, tomatenmark, oregano, gewürze
+germknödel, 8, 7, 5, eher Abend, nein, ja, -,mehl, hefe, milch, zucker, butter, pflaumenmus
+gyrosmitreis, 8, 8, 5, eher Abend, nein, nein, -, gyros, reis, zwiebeln, knoblauch, gewürze
+gyrosmitNudeln, 8.5, 8, 5, eher Abend, nein, nein, -, gyros, nudeln, zwiebeln, knoblauch, gewürze
+chiliconcarne, 9, 8, 5, eher Abend, nein, ja, -, bohnen, tomaten, zwiebeln, knoblauch, chili, gewürze
+nudelnmithackfleisch, 8, 7, 4, beides, nein, nein, -,nudeln, hackfleisch, zwiebeln, knoblauch, tomatenmark, gewürze
+reismithackfleisch, 8, 8, 5, beides, nein, nein, -,reis, hackfleisch, zwiebeln, knoblauch, gemüsebrühe, gewürze
