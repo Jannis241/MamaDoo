@@ -1,10 +1,30 @@
+print()
+print()
+print()
+print()
+print()
+print()
+print()
+print()
+print("gmail service not working rn.......")
+print("gmail service not working rn.......")
+print("gmail service not working rn.......")
+print("gmail service not working rn.......")
+print("gmail service not working rn.......")
+print("gmail service not working rn.......")
+print()
+print()
+print()
+
+
+
 def sendMail(content, subject):
     import smtplib
     from email.mime.text import MIMEText
     from email.mime.multipart import MIMEMultipart
 
-    sender_email = "jjmaus2401@gmail.com"
-    receiver_email = "jjmaus2401b@gmail.com"
+    sender_email = "@gmail.com"
+    receiver_email = "@gmail.com"
 
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
@@ -20,7 +40,7 @@ def sendMail(content, subject):
         smtpserver.ehlo()
         smtpserver.starttls()
         smtpserver.ehlo()
-        smtpserver.login("jjmaus2401@gmail.com","oxzl fkoy titd wuco")
+        smtpserver.login("@gmail.com","")
         smtpserver.sendmail(
             sender_email, receiver_email, message.as_string()
         )
