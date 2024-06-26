@@ -1,0 +1,22 @@
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 3rem;
+}
+
+.lead {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.list-group-item {
+    font-size: 1.25rem;
+}
+
+.navbar .btn {
+    margin-left: auto;
+}
