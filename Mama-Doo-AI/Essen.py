@@ -55,13 +55,13 @@ def read_configurations(filename):
                     
                     essen = Essen(name, rating, satt, difficulty, acutalZutatenListe, wann, tm, mb, extraInfo)
                     alleGerichte.append(essen)
-
+    
     except FileNotFoundError:
         print(f"Datei {filename} wurde nicht gefunden.")
     
     return gerichte
 
-# Beispielaufruf
+
 script_dir = os.path.dirname(__file__)
 filename = os.path.join(script_dir, 'config.txt')
 read_configurations(filename)
