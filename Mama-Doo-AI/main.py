@@ -1,6 +1,6 @@
 import Essen, Zutaten
-
-
+import gmail
+from datetime import date
 
 class MamaDooAi():
     def __init__(self):
@@ -80,8 +80,34 @@ print()
 print()
 print(len(results), " Mögliche Gerichte gefunden!")
 print()
+info = "Das hier könnten die Gerichte für heute sein: "
+info += "\n"
 for gericht in results:
     Essen.printGerichtStats(gericht)
+    info += "\n"
+    info += f"Name: {gericht.name}"
+    info += "\n"
+    info += f"Bewertung: {gericht.rating}/10"
+    info += "\n"
+    info += f"Name: {gericht.satt}/10"
+    info += "\n"
+    info += f"Name: {gericht.difficulty}/10"
+    info += "\n"
+    info += f"Thermomix: {gericht.thermomix}"
+    info += "\n"
+    info += f"Mama benötigt: {gericht.mamaBenötigt}"
+    info += "\n"
+    info += f"Wann: {gericht.wann}"
+    info += "\n"
+    info += "Zutaten: "
+    for zutat in gericht.zutaten:
+        info += zutat.name +", "
+    info += "\n"
+    info += f"Extra Info: {gericht.extraInfo}"
+    info += "\n"
+    info += "\n"
+if len(results) != 0:
+    gmail.sendMail(info, f"Mama Doo AI - Essen für Heute - {date.today().strftime("%d-%m-%Y")}")
 
 input()
 
