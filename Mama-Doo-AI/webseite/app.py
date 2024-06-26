@@ -27,7 +27,11 @@ def add_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    # Verarbeite hier die Daten, die vom Formular gesendet werden
+    # Hier könntest du die eingegebenen Daten verarbeiten oder speichern
+    return redirect(url_for('confirmation'))
+
+@app.route('/confirmation')
+def confirmation():
     return render_template('submit.html')
 
 if __name__ == '__main__':
