@@ -25,18 +25,29 @@ def add_food_have():
             foods_have.append(food)
     return render_template('add_food_have.html', foods_have=foods_have)
 
+@app.route('/remove-food-not-have', methods=['POST'])
+def remove_food_not_have():
+    food_to_remove = request.form['food']
+    if food_to_remove in foods_not_have:
+        foods_not_have.remove(food_to_remove)
+    return redirect(url_for('add_food_not_have'))
+
+@app.route('/remove-food-have', methods=['POST'])
+def remove_food_have():
+    food_to_remove = request.form['food']
+    if food_to_remove in foods_have:
+        foods_have.remove(food_to_remove)
+    return redirect(url_for('add_food_have'))
+
 @app.route('/submit', methods=['POST'])
 def submit():
-    global foods_have, foods_not_have
-    foods_have = []
-    foods_not_have = []
+    foods_have.clear()
+    foods_not_have.clear()
     return redirect(url_for('confirmation'))
 
 @app.route('/confirmation')
 def confirmation():
     return render_template('submit.html')
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
