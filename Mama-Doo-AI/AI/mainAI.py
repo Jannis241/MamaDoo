@@ -1,7 +1,7 @@
 import Essen, Zutaten
 import gmail
 from datetime import date
-
+zutatenManager = Zutaten.Manager()
 class MamaDooAi():
     def __init__(self):
         self.alleGerichte = Essen.alleGerichte
@@ -18,6 +18,17 @@ class MamaDooAi():
                 possibleGerichte.append(gericht)
 
         return possibleGerichte
+    def setUserInfo(self, loswerdeList, nichtVorhandenList):
+
+        for zutatString in loswerdeList:
+            self.loswerdeZutaten.append(getattr(zutatenManager, zutatString.strip().lower().replace(" ", "")))
+        for zutatString in nichtVorhandenList:
+            self.nichtVorhandeneZutate.append(getattr(zutatenManager, zutatString.strip().lower().replace(" ", "")))
+    
+        for zutat in self.nichtVorhandeneZutate:
+            zutat.istVorhanden = -1
+        for zutat in self.loswerdeZutaten:
+            zutat.istVorhanden = 1
     
     def getUserInfo(self):
         
@@ -68,48 +79,56 @@ class MamaDooAi():
         print(f"{essen.name} hat den loswerde check geschafft")
         return vorhandenCheck == True and loswerdeCheck == False
 
-zutatenManager = Zutaten.Manager()
+    
+if __name__ == '__main__': # falls das programm manuell gestartet wird
+
+    MDA = MamaDooAi()
+    MDA.getUserInfo()
+    results = MDA.evaluate() # Liste mit den Instanzen der möglichen Gerichte
+    print()
+    print()
+    print(len(results), " Mögliche Gerichte gefunden!")
+    print()
+    info = "Das hier könnten die Gerichte für heute sein: "
+    info += "\n"
+    for gericht in results:
+            Essen.printGerichtStats(gericht)
+            info += "\n"
+            info += f"Name: {gericht.name}"
+            info += "\n"
+            info += f"Bewertung: {gericht.rating}/10"
+            info += "\n"
+            info += f"Name: {gericht.satt}/10"
+            info += "\n"
+            info += f"Name: {gericht.difficulty}/10"
+            info += "\n"
+            info += f"Thermomix: {gericht.thermomix}"
+            info += "\n"
+            info += f"Mama benötigt: {gericht.mamaBenötigt}"
+            info += "\n"
+            info += f"Wann: {gericht.wann}"
+            info += "\n"
+            info += "Zutaten: "
+            for zutat in gericht.zutaten:
+                info += zutat.name +", "
+            info += "\n"
+            info += f"Extra Info: {gericht.extraInfo}"
+            info += "\n"
+            info += "\n"
+    if len(results) != 0:
+        #gmail.sendMail(info, f"Mama Doo AI - Essen für Heute - {date.today().strftime("%d-%m-%Y")}")
+        pass
+else: # falls es ein import ist
+    print()
+    print()
+    print()
+    print()
+    print("Main AI got imported..")
+    print()
+    MDA = MamaDooAi()
 
 
 
-MDA = MamaDooAi()
-MDA.getUserInfo()
-results = MDA.evaluate() # Liste mit den Instanzen der möglichen Gerichte
-
-print()
-print()
-print(len(results), " Mögliche Gerichte gefunden!")
-print()
-info = "Das hier könnten die Gerichte für heute sein: "
-info += "\n"
-for gericht in results:
-    Essen.printGerichtStats(gericht)
-    info += "\n"
-    info += f"Name: {gericht.name}"
-    info += "\n"
-    info += f"Bewertung: {gericht.rating}/10"
-    info += "\n"
-    info += f"Name: {gericht.satt}/10"
-    info += "\n"
-    info += f"Name: {gericht.difficulty}/10"
-    info += "\n"
-    info += f"Thermomix: {gericht.thermomix}"
-    info += "\n"
-    info += f"Mama benötigt: {gericht.mamaBenötigt}"
-    info += "\n"
-    info += f"Wann: {gericht.wann}"
-    info += "\n"
-    info += "Zutaten: "
-    for zutat in gericht.zutaten:
-        info += zutat.name +", "
-    info += "\n"
-    info += f"Extra Info: {gericht.extraInfo}"
-    info += "\n"
-    info += "\n"
-if len(results) != 0:
-    gmail.sendMail(info, f"Mama Doo AI - Essen für Heute - {date.today().strftime("%d-%m-%Y")}")
-
-input()
 
 
 
