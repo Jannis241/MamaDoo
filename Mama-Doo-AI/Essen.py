@@ -45,7 +45,9 @@ def read_configurations(filename):
                     for zutat_name in zutatenListe:
                         try:
                             zutat = getattr(zutatenManager, zutat_name.strip())
+                            
                             acutalZutatenListe.append(zutat)
+                            
                         except:
                             print()
                             print("Zutat", zutat_name, "does not exist.")
@@ -64,8 +66,7 @@ script_dir = os.path.dirname(__file__)
 filename = os.path.join(script_dir, 'config.txt')
 read_configurations(filename)
 
-
-for gericht in alleGerichte:
+def printGerichtStats(gericht):
     print(f"Name: {gericht.name}")
     print(f"Bewertung: {gericht.rating}")
     print(f"Sättigung: {gericht.satt}")
