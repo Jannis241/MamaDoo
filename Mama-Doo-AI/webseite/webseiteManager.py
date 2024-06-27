@@ -55,7 +55,10 @@ def remove_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
+
     global foods_have, foods_not_have, results
+    print("nicht habe: ", foods_not_have)
+    print("habe: ", foods_have)
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
     results = mainAI.MDA.evaluate()  # getting the response
 

@@ -6,11 +6,11 @@
 ###
 
 
-rührei mit speck, 8.5, 10, 3, abends, nein, nein, - ,eier, speck, milch
+rührei mit speck, 8, 10, 3, abends, nein, nein, - ,eier, speck, milch
 spiegel ei mit Bratkartoffeln, 3.5, 7, 5, beides, nein, ja, - , eier, kartoffeln
 chicken nuggets mit kartoffel püree, 9, 10, 6, immer, ja, ja,fufu ist lecker,kartoffeln, chickennuggets
 Fischstäbchen / lachs mit Kartoffelpüree, 8, 9.5, 4, lieber abends ,ja, nein, - ,fischstäbchen, karToffeln
-Fertig Pizza, 10, 10, 0, Immer, Nein, Nein, sehr lecker, fertigpizza
+Fertig Pizza, 10, 10, 0, Immer, Nein, Nein, sehr lecker aber ungesund, fertigpizza
 Selbst gemachte Pizza, 6.5, 8.5, 8,  eher Abends, nein, ja, Jannis Bewertung: 4 -> Jesko Bewertung: 9, ananas, zwiebeln, käse, salami, hefe, milch, tomatensoße, salz, zucker
 spaghetti bolognese, 8.5, 5.5, 5, immer, ja, nein, Es kommt sehr auf die Soße drauf an (auf keinen Fall die orangene nehmen) es kann von 6-8.5/10 gehen, spaghetti, hackfleisch, tomatensoße
 Wraps, 7, 6, 4, beides, nein, nein, -, wraps, hähnchenfleisch, salat, tomaten, gewürze, zwiebeln
@@ -20,7 +20,7 @@ Nudel Salat mit Fleisch, 7, 7, 3, beides, nein, ja, -, nudeln, schinken, salatcr
 kartoffelecken, 6, 5, 3, eher Abend, nein, nein, -, kartoffeln, öl, salz, gewürze
 auflauf, 8, 7, 5, eher Abend, nein, ja, -, nudeln, käse, gewürze, hackfleisch
 mörengemüse, 6, 4, 2, beides, nein, nein, -,möhren, butter, gewürze, kartoffeln
-kaiserschmarn, 9, 8, 6, eher Mittag, nein, ja, -, mehl, milch, eier, zucker, butter, puderzucker, apfelmus
+kaiserschmarn, 9.5, 8, 6, eher Mittag, nein, ja, -, mehl, milch, eier, zucker, butter, puderzucker, apfelmus
 crepes, 8, 6, 4, beides, nein, nein, -,mehl, milch, eier, zucker, nutella
 milchreis, 7, 7, 3, eher Mittag, ja, ja, -, milch, milchreis, zucker, zimt
 grießbrei, 6, 6, 3, eher Mittag, ja, ja, -,milch, grieß, zucker, zimt
