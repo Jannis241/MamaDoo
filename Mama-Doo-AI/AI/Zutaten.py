@@ -7,6 +7,8 @@ class Manager():
         self.pfeffer = Zutat("pfeffer")
         self.butter = Zutat("butter")
         self.speck = Zutat("speck")
+        self.apfel = Zutat("apfel")
+        self.banane = Zutat("bananen")
         self.kartoffeln = Zutat("kartoffeln")
         self.zwiebeln = Zutat("zwiebeln")
         self.hähnchenfleisch = Zutat("hähnchenfleisch")

@@ -16,7 +16,7 @@ class MamaDooAi():
             if (self.canEssenBeMade(gericht)):
                 
                 possibleGerichte.append(gericht)
-
+        possibleGerichte.sort(key=lambda x: x.rating, reverse=True)
         return possibleGerichte
     
     def checkIfZutatExists(self, zutat):
