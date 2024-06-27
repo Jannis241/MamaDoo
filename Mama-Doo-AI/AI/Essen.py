@@ -27,15 +27,15 @@ def read_configurations(filename):
                 if line and line[0] != "#":
                     parts = line.split(',')
                     
-                    name = parts[0].strip().lower()
+                    name = parts[0].strip()
                     rating = float(parts[1].strip())
                     satt = float(parts[2].strip())
                     difficulty = float(parts[3].strip())
-                    wann = parts[4].strip().lower()
+                    wann = parts[4].strip()
                     zutatenListe = []
-                    tm = parts[5].strip().lower()
-                    mb = parts[6].strip().lower()
-                    extraInfo = parts[7].strip().lower()
+                    tm = parts[5].strip()
+                    mb = parts[6].strip()
+                    extraInfo = parts[7].strip()
                     for i in range(8, len(parts)):
                         word = parts[i].strip().lower()
                         zutatenListe.append(word)

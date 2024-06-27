@@ -10,13 +10,13 @@ class MamaDooAi():
         self.loswerdeZutaten = []
 
     def evaluate(self, sortedByDifficulty = False, MamaBenötigtFilter = False):
-        loswerdeBonus = 10
-        sattMultiplier = 1
-        ratingMultiplier = 2
-        AufwandMultiplier = 2
+        loswerdeBonus = 50
+        sattMultiplier = .5
+        ratingMultiplier = 1
+        AufwandMultiplier = -2.5
 
         if sortedByDifficulty: 
-            AufwandMultiplier = 1000
+            AufwandMultiplier = -1000
         
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
@@ -50,7 +50,7 @@ class MamaDooAi():
             
         
         # Sortiere possibleGerichte nach dem Score des Gerichts in absteigender Reihenfolge
-        sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse= not sortedByDifficulty)
+        sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
         
         return sorted_gerichte
     
@@ -105,7 +105,6 @@ class MamaDooAi():
 
     def canEssenBeMade(self, essen):
         vorhandenCheck = True
-        loswerdeCheck = False
         print("")
         print(f"Checking: {essen.name}")
         for zutat in essen.zutaten:
@@ -114,18 +113,8 @@ class MamaDooAi():
                 print(f"{essen.name} failed vorhanden check, weil {zutat.name} nicht vorhanden ist!")
         print(f"{essen.name} hat den Vorhanden check geschafft")
 
-        print("loswerde zutaten: ", self.loswerdeZutaten)
-        if (len(self.loswerdeZutaten) == 0):
-            loswerdeCheck = True
-        for zutat in essen.zutaten:
-            for loswerdeZutat in self.loswerdeZutaten:
-                if loswerdeZutat.name == zutat.name:
-                    loswerdeCheck = True
-                    print(f"{essen.name} hat den Loswerde check geschafft")
-                    break
-        if not loswerdeCheck:
-            print(f"{essen.name} hat den Loswerde check nicht geschafft")
-        return vorhandenCheck and loswerdeCheck
+
+        return vorhandenCheck
 
     
 if __name__ == '__main__': # falls das programm manuell gestartet wird
