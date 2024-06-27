@@ -15,11 +15,6 @@ results = []
 
 @app.route('/')
 def home():
-    global foods_have, foods_not_have
-    foods_have = []
-    foods_not_have = []
-
-    mainAI.MDA.reinit()
     return render_template('index.html')
 
 @app.route('/add-food-not-have', methods=['GET', 'POST'])
@@ -77,15 +72,22 @@ def submit():
     
     # Clear the lists after submission
 
-
     return redirect(url_for('confirmation'))
 
 @app.route('/confirmation')
 def confirmation():
     return render_template('submit.html', results=results)
 
-def startApp():
-    app.run(debug=True)
+@app.route('/reset-and-home')
+def reset_and_home():
+    print("RE-INITIALIZE EVERYTHING.....")
+    global foods_have, foods_not_have
+    foods_have = []
+    foods_not_have = []
+    mainAI.MDA.reinit()
+    return redirect(url_for('home'))
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

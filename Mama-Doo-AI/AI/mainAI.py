@@ -28,7 +28,7 @@ class MamaDooAi():
 
         mamaTest = True
 
-        if sortedByDifficulty: AufwandMultiplier = -1000
+        if sortedByDifficulty: AufwandMultiplier = -500
 
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
@@ -90,6 +90,7 @@ class MamaDooAi():
         self.loswerdeZutaten = []
         self.nichtVorhandeneZutate = []
         self.alleGerichte = Essen.alleGerichte
+        print("reseted ai vars")
         
     
     def checkIfZutatExists(self, zutat):
