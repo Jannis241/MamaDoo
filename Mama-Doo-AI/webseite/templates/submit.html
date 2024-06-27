@@ -86,7 +86,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="true" id="mamaBenötigt" name="mamaBenötigt" {% if 'mamaBenötigt' in request.form %} checked {% endif %}>
                     <label class="form-check-label" for="mamaBenötigt">
-                        Nur Mama benötigte Gerichte anzeigen
+                        Nur Gerichte anzeigen wo Mama nicht ben&ouml;tigt wird
                     </label>
                 </div>
                 <div class="form-check mt-2">
@@ -113,7 +113,7 @@
                         <p><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
                         <p><strong>Wann:</strong> {{ gericht.wann }}</p>
                         <p><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
-                        <p><strong>Mama Benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
+                        <p><strong>Mama Ben&ouml;tigt:</strong> {{ gericht.mamaBen&ouml;tigt }}</p>
                         <p><strong>Extra Infos:</strong> {{ gericht.extraInfo }}</p>
                         <p><strong>Zutaten:</strong></p>
                         <ul class="list-group list-group-flush">

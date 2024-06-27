@@ -20,22 +20,32 @@ class MamaDooAi():
         
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
+            mamaTestÜberstanden = True
             if self.canEssenBeMade(gericht):
 
-                
-                score = 0
-                for zutat in gericht.zutaten:
-                    for loswerdeZutat in self.loswerdeZutaten:
-                        if zutat.name == loswerdeZutat.name:
-                            score += loswerdeBonus  # Punkte hinzufügen, wenn eine loswerdeZutat vorhanden ist
+                isMamaNeeded = gericht.mamaBenötigt.lower().strip().replace(" ", "")
 
-                BewertungsScore = gericht.rating * ratingMultiplier
-                Sättigungsscore = gericht.satt * sattMultiplier
-                Aufwandscore = gericht.difficulty * AufwandMultiplier
-
-                score += BewertungsScore + Sättigungsscore + Aufwandscore
+                # wenn 
+                if (MamaBenötigtFilter):
+                    print("is mama needed var: ", isMamaNeeded)
+                    if (isMamaNeeded == "ja"):
                         
-                possibleGerichte[gericht] = score
+                        print(f"{gericht.name} hat den Mama nötig test nicht bestanden --> essen braucht mama: {gericht.mamaBenötigt}")
+                        mamaTestÜberstanden = False
+                if (mamaTestÜberstanden):
+                    score = 0
+                    for zutat in gericht.zutaten:
+                        for loswerdeZutat in self.loswerdeZutaten:
+                            if zutat.name == loswerdeZutat.name:
+                                score += loswerdeBonus  # Punkte hinzufügen, wenn eine loswerdeZutat vorhanden ist
+
+                    BewertungsScore = gericht.rating * ratingMultiplier
+                    Sättigungsscore = gericht.satt * sattMultiplier
+                    Aufwandscore = gericht.difficulty * AufwandMultiplier
+
+                    score += BewertungsScore + Sättigungsscore + Aufwandscore
+                            
+                    possibleGerichte[gericht] = score
                 
             
         
