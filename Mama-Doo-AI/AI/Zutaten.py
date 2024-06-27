@@ -11,6 +11,7 @@ class Manager():
         self.zwiebeln = Zutat("zwiebeln")
         self.hähnchenfleisch = Zutat("hähnchenfleisch")
         self.öl = Zutat("öl")
+        self.eis = Zutat("eis")
         self.muskatnuss = Zutat("muskatnuss")
         self.fischstäbchen = Zutat("fischstäbchen")
         self.lachs = Zutat("lachs")

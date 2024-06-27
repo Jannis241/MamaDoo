@@ -18,6 +18,14 @@ class MamaDooAi():
                 possibleGerichte.append(gericht)
 
         return possibleGerichte
+    
+    def checkIfZutatExists(self, zutat):
+        try:
+            getattr(zutatenManager, zutat) # veruschen die zutat im Manager zu finden, falls es sie nicht gibt, gibt es ein error
+            return True
+        except:
+            return False
+
     def setUserInfo(self, loswerdeList, nichtVorhandenList):
 
         for zutatString in loswerdeList:

@@ -39,15 +39,22 @@
             </div>
             <button type="submit" class="btn btn-primary">Hinzufügen</button>
         </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} mt-4">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         {% if foods_not_have %}
         <h2 class="mt-5">Bereits hinzugefügt:</h2>
         <ul class="list-group">
             {% for food in foods_not_have %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{ food }}
-                    <form id="removeForm" action="/remove-food-not-have" method="post" class="ml-2">
+                    <form action="/remove-food-not-have" method="post" class="ml-2">
                         <input type="hidden" name="food" value="{{ food }}">
-                        <button type="button" onclick="submitForm('removeForm')" class="btn btn-danger btn-sm ml-2">Remove</button>
+                        <button type="submit" class="btn btn-danger btn-sm ml-2">Remove</button>
                     </form>
                 </li>
             {% endfor %}
@@ -55,11 +62,6 @@
         {% endif %}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        function submitForm(formId) {
-            $('#' + formId).submit();
-        }
-    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

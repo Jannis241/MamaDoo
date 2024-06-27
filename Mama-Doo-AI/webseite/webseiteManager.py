@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 import sys
 import os
-
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AI')))
 import mainAI
 import Essen
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Für Flash-Messages erforderlich
 
 foods_have = []
 foods_not_have = []
@@ -21,7 +21,10 @@ def add_food_not_have():
     if request.method == 'POST':
         food = request.form['food']
         if food and food not in foods_not_have:
-            foods_not_have.append(food)
+            if mainAI.MDA.checkIfZutatExists(food):
+                foods_not_have.append(food)
+            else:
+                flash(f"Das Lebensmittel '{food}' existiert nicht.", 'danger')
     return render_template('add_food_not_have.html', foods_not_have=foods_not_have)
 
 @app.route('/add-food-have', methods=['GET', 'POST'])
@@ -29,7 +32,10 @@ def add_food_have():
     if request.method == 'POST':
         food = request.form['food']
         if food and food not in foods_have:
-            foods_have.append(food)
+            if mainAI.MDA.checkIfZutatExists(food):
+                foods_have.append(food)
+            else:
+                flash(f"Das Lebensmittel '{food}' existiert nicht.", 'danger')
     return render_template('add_food_have.html', foods_have=foods_have)
 
 @app.route('/remove-food-not-have', methods=['POST'])
@@ -48,49 +54,26 @@ def remove_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    global foods_have, foods_not_have
+    mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
+    results = mainAI.MDA.evaluate()  # getting the response
 
-    # The user has submitted their choices
-    # Getting and setting all the data of the MDA
-    print("Loswerden: ", foods_have)
-    print("nicht Vorhanden: ", foods_not_have)
-    mainAI.MDA.setUserInfo(foods_have, foods_not_have) # sending the info to the ai
-    print("Setting user info to the MDA..")
-    print()
-    print("Getting evaluation..")
-    results = mainAI.MDA.evaluate() # getting the respone
-    print()
-    print()
-    print()
-    print()
-    print(f"Got {len(results)} responses from AI: ")
-    print()
-    print("----------------------------")
+    # Clear the lists after submission
+    foods_have = []
+    foods_not_have = []
+    
+    # Store results in session for access on the confirmation page
+    # session['results'] = results
 
-    for gericht in results:
-        Essen.printGerichtStats(gericht)
-
-    foods_have.clear()
-    foods_not_have.clear()
     return redirect(url_for('confirmation'))
 
 @app.route('/confirmation')
 def confirmation():
-    
-    # hier müssten dann die results angezeigt werden
-    # vielleicht hier steht dann so: erfolgreich 
-    # und darunter zurück zur start seite und see results die dich dann auf eine neue webseite bringen
-    # Evaluation muss noch gefixt werden
-    # funktion dass er direkt sagt in der webseite falls er ein essen nicht findet
-    # einkaufs wunschliste oben im menü als feature setzen (einfach) nur mit add und remove eigentlich genau das selbe nur dass es nicht resetet wird
-    # alle Zutaten und Essen konfigurieren (schwierigkeit, zutaten, mama dabei usw)
-    # komplette Ad ons, einfach vielleicht bei den Essen daten noch ein extra punkt "possible add ons" wo dann gesagt wird was das ist und wie viel es plus geben kann
-    # alles umbenennen
-    # filter ob mittags oder abends 
-    # auf raspberry pi laufen lassen
-    # extra Infos alle adden und bewertungen usw
+    # results = session.get('results', [])
     return render_template('submit.html')
 
 def startApp():
     app.run(debug=True)
+
 if __name__ == '__main__':
     app.run(debug=True)
