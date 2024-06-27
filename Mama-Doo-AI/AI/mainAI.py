@@ -27,10 +27,7 @@ class MamaDooAi():
 
                 # wenn 
                 if (MamaBenötigtFilter):
-                    print("is mama needed var: ", isMamaNeeded)
                     if (isMamaNeeded == "ja"):
-                        
-                        print(f"{gericht.name} hat den Mama nötig test nicht bestanden --> essen braucht mama: {gericht.mamaBenötigt}")
                         mamaTestÜberstanden = False
                 if (mamaTestÜberstanden):
                     score = 0
@@ -67,11 +64,12 @@ class MamaDooAi():
             self.loswerdeZutaten.append(getattr(zutatenManager, zutatString.strip().lower().replace(" ", "")))
         for zutatString in nichtVorhandenList:
             self.nichtVorhandeneZutate.append(getattr(zutatenManager, zutatString.strip().lower().replace(" ", "")))
-    
-        for zutat in self.nichtVorhandeneZutate:
-            zutat.istVorhanden = -1
+
         for zutat in self.loswerdeZutaten:
             zutat.istVorhanden = 1
+        for zutat in self.nichtVorhandeneZutate:
+            zutat.istVorhanden = -1
+
     
     def getUserInfo(self):
         
@@ -105,15 +103,9 @@ class MamaDooAi():
 
     def canEssenBeMade(self, essen):
         vorhandenCheck = True
-        print("")
-        print(f"Checking: {essen.name}")
         for zutat in essen.zutaten:
             if self.getVorratOfZutat(zutat) == -1:
                 vorhandenCheck = False
-                print(f"{essen.name} failed vorhanden check, weil {zutat.name} nicht vorhanden ist!")
-        print(f"{essen.name} hat den Vorhanden check geschafft")
-
-
         return vorhandenCheck
 
     

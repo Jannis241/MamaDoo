@@ -61,9 +61,8 @@ def submit():
     mamaBenötigt = request.form.get('mamaBenötigt') == 'true'
     sortiereNachSchwierigkeit = request.form.get('sortiereNachSchwierigkeit') == 'true'
     
-    print("Mama benötigt:", mamaBenötigt)
-    print("Nach Schwierigkeit sortieren:", sortiereNachSchwierigkeit)
-    
+    print(f"Set User Info of MDA; essen was verbraucht werden soll: {foods_have} -- essen welches nicht vorhanden ist: {foods_not_have}")
+
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
     
     # Hier werden die Parameter an die evaluate-Funktion übergeben
