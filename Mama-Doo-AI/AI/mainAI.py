@@ -36,6 +36,8 @@ class MamaDooAi():
             print("Checking:", gericht.name)
             score = 0
             if self.canEssenBeMade(gericht): # alle zutaten sind da
+
+                # mama check funktioniert noch nicht
                 if MamaBenötigtFilter:
                     mamaTest = gericht.mamaBenötigt == False
                     print(f"{gericht.name} failed because of: Mama Check")
@@ -70,7 +72,10 @@ class MamaDooAi():
             exit(-1)
 
         sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
+        return sorted_gerichte
+        
 
+    def reinit(self):
         # alle zutaten werden resetet falls der user nochmal neue angaben machen möchte
         for zutat in self.loswerdeZutaten:
             print("reseted: ", zutat.name)
@@ -85,8 +90,7 @@ class MamaDooAi():
         self.loswerdeZutaten = []
         self.nichtVorhandeneZutate = []
         self.alleGerichte = Essen.alleGerichte
-        return sorted_gerichte
-
+        
     
     def checkIfZutatExists(self, zutat):
         try:

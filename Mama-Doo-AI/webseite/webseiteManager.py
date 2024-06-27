@@ -15,6 +15,11 @@ results = []
 
 @app.route('/')
 def home():
+    global foods_have, foods_not_have
+    foods_have = []
+    foods_not_have = []
+
+    mainAI.MDA.reinit()
     return render_template('index.html')
 
 @app.route('/add-food-not-have', methods=['GET', 'POST'])
@@ -55,7 +60,7 @@ def remove_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    global foods_have, foods_not_have, results
+    global results
     
     # Erfasse die Checkbox-Werte
     mamaBenötigt = request.form.get('mamaBenötigt') == 'true'
@@ -71,8 +76,7 @@ def submit():
     results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt)
     
     # Clear the lists after submission
-    foods_have = []
-    foods_not_have = []
+
 
     return redirect(url_for('confirmation'))
 
