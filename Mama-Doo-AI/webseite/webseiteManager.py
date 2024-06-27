@@ -55,13 +55,20 @@ def remove_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-
     global foods_have, foods_not_have, results
-    print("nicht habe: ", foods_not_have)
-    print("habe: ", foods_have)
+    
+    # Erfasse die Checkbox-Werte
+    mamaBenötigt = request.form.get('mamaBenötigt') == 'true'
+    sortiereNachSchwierigkeit = request.form.get('sortiereNachSchwierigkeit') == 'true'
+    
+    print("Mama benötigt:", mamaBenötigt)
+    print("Nach Schwierigkeit sortieren:", sortiereNachSchwierigkeit)
+    
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
-    results = mainAI.MDA.evaluate()  # getting the response
-
+    
+    # Hier werden die Parameter an die evaluate-Funktion übergeben
+    results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt)
+    
     # Clear the lists after submission
     foods_have = []
     foods_not_have = []

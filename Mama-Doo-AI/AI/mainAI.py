@@ -10,7 +10,7 @@ class MamaDooAi():
         self.nichtVorhandeneZutate = []
         self.loswerdeZutaten = []
 
-    def evaluate(self, sortedByDifficulty = False):
+    def evaluate(self, sortedByDifficulty = False, MamaBenötigtFilter = False):
         loswerdeBonus = 10
         sattMultiplier = 1
         ratingMultiplier = 2
