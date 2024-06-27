@@ -817,5 +817,8 @@ class Zutat():
         self.istVorhanden = 0 # 1 will loswerden, 0 habe ich (default), -1 habe ich nicht
         self.isAddOn = False
 
+    def reset(self):
+        self.istVorhanden = 0
+
 
 

@@ -19,53 +19,74 @@ class MamaDooAi():
         # 7. score berechnen auf alle valid gerichte (die den 1. check überstanden haben) adden
         # 8. Liste in der richtigen Reihenfolge returnen
 
+        validGerichteCount = 0
+
         loswerdeBonus = 1000
         sattMultiplier = 1
         ratingMultiplier = 2
         AufwandMultiplier = -2
 
+        mamaTest = True
+
         if sortedByDifficulty: AufwandMultiplier = -1000
-
-
-
-
-
-
-
-
 
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
-            mamaTestÜberstanden = True
-            if self.canEssenBeMade(gericht):
+            print("----------------")
+            print("Checking:", gericht.name)
+            score = 0
+            if self.canEssenBeMade(gericht): # alle zutaten sind da
+                if MamaBenötigtFilter:
+                    mamaTest = gericht.mamaBenötigt == False
+                    print(f"{gericht.name} failed because of: Mama Check")
 
-                isMamaNeeded = gericht.mamaBenötigt.lower().strip().replace(" ", "")
+                if mamaTest:
+                    aufwandScore = gericht.difficulty * AufwandMultiplier # desto mehr der Aufwand ist desto mehr geht der aufwand score ins negative
+                    ratingScore = gericht.rating * ratingMultiplier
+                    sattScore = gericht.satt * sattMultiplier
 
-                # wenn 
-                if (MamaBenötigtFilter):
-                    if (isMamaNeeded == "ja"):
-                        mamaTestÜberstanden = False
-                if (mamaTestÜberstanden):
-                    score = 0
+                    score += aufwandScore + ratingScore + sattScore
+
                     for zutat in gericht.zutaten:
                         for loswerdeZutat in self.loswerdeZutaten:
                             if zutat.name == loswerdeZutat.name:
-                                score += loswerdeBonus  # Punkte hinzufügen, wenn eine loswerdeZutat vorhanden ist
+                                score += loswerdeBonus
+                                print(f"{gericht.name} got: loswerde Bonus")
 
-                    BewertungsScore = gericht.rating * ratingMultiplier
-                    Sättigungsscore = gericht.satt * sattMultiplier
-                    Aufwandscore = gericht.difficulty * AufwandMultiplier
-
-                    score += BewertungsScore + Sättigungsscore + Aufwandscore
-                            
                     possibleGerichte[gericht] = score
-                
-            
+                    validGerichteCount += 1
+                    
+                    print(f"Name: {gericht.name} - Score: {score}")
+
         
-        # Sortiere possibleGerichte nach dem Score des Gerichts in absteigender Reihenfolge
+        if len(possibleGerichte) != validGerichteCount:
+            print()
+            print()
+            print()
+            print()
+            print()
+            print("Something went wrong the evaluation dict...")
+            print()
+            exit(-1)
+
         sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
+
+        # alle zutaten werden resetet falls der user nochmal neue angaben machen möchte
+        for zutat in self.loswerdeZutaten:
+            print("reseted: ", zutat.name)
+            zutat.reset()
         
+            
+        for zutat in self.nichtVorhandeneZutate:
+            print("reseted: ", zutat.name)
+            zutat.reset()
+            
+        # init alle variablen neu falls der user noch einmal von vorne anfängt
+        self.loswerdeZutaten = []
+        self.nichtVorhandeneZutate = []
+        self.alleGerichte = Essen.alleGerichte
         return sorted_gerichte
+
     
     def checkIfZutatExists(self, zutat):
         try:
@@ -121,6 +142,7 @@ class MamaDooAi():
         vorhandenCheck = True
         for zutat in essen.zutaten:
             if self.getVorratOfZutat(zutat) == -1:
+                print(f"{essen.name} failed because of: vorhanden Check ({zutat.name})")
                 vorhandenCheck = False
         return vorhandenCheck
 

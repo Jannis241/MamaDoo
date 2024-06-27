@@ -12,7 +12,7 @@ Spiegel Ei mit Bratkartoffeln, 3.5, 7, 5, Beides, Nein, Ja, - , eier, kartoffeln
 
 Chicken Nuggets mit Kartoffelpüree, 9, 10, 6, Beides, Ja, Ja,fufu ist lecker,kartoffeln, chickennuggets
 
-Fischstäbchen / Lachs mit Kartoffelpüree, 7, 9, 5, eher Abends ,Ja, Ja, - ,fischstäbchen, karToffeln
+Fischstäbchen / Lachs mit Kartoffelpüree, 7, 9, 5, eher Abends ,Ja, Ja, - ,fischstäbchen, kartoffeln
 
 Fertig Pizza, 10, 10, 0, Beides, Nein, Nein, sehr lecker aber ungesund, fertigpizza
 
@@ -31,7 +31,7 @@ Burger, 10, 10, 6, Beides, Nein, Ja, -, bürgerbrötchen, hackfleisch, käse, sa
 
 Nudel Salat mit Fleisch, 10, 7, 6, Beides, Nein, Ja, kann man gut als Beilage machen, nudeln, schinken, salatcreme, gewürze, salzgurken, käse, paprika
 
-Kartoffel ecken, 8, 9.5 , 5, eher Abend, Nein, Ja, mit Zaziki -> 9/10, kartoffeln, öl, salz, gewürze
+Kartoffel ecken, 8.5, 9.5 , 5, eher Abend, Nein, Ja, mit Zaziki -> 9/10, kartoffeln, öl, salz, gewürze
 
 Auflauf, 5, 8, 5, eher Abend, Nein, Ja, Jannis: 1 - Jesko: 9, nudeln, käse, gewürze, hackfleisch
 
@@ -43,7 +43,7 @@ Milchreis, 7, 4.5, 3, eher Mittag, Ja, Nein, nicht zu oft, milch, milchreis, zuc
 Grießbrei, 7.25, 4.5, 4, eher Mittag, Ja, Nein, -,milch, grieß, zucker, zimt
 Pizzabrötchen, 6.5, 7, 7, immer, Nein, Ja, -,brötchen, salami, käse, tomatenmark, oregano, gewürze
 Germknödel, 9.5, 8, 8, immer, Ja, Ja, mit Vanillesoße ,mehl, hefe, milch, zucker, butter, pflaumenmus, Vanillesoße
-Gyros mit Reis, 8.5, 9, 5, immer, Nein, Nein, -, gyros, reis, zwiebeln, knoblauch, gewürze
+Gyros mit Reis, 8, 9, 5, immer, Nein, Nein, -, gyros, reis, zwiebeln, knoblauch, gewürze
 Gyros mit Nudeln, 9, 9, 5, immer, Nein, Nein, -, gyros, nudeln, zwiebeln, knoblauch, gewürze
 Chili con carne, 4.5, 5, 3, eher Mittags, Nein, Ja, -, bohnen, tomaten, zwiebeln, knoblauch, chili, gewürze
 Nudeln mit Hackfleisch, 10, 8, 5, Beides, Nein, Nein, mit Apfelmus,nudeln, hackfleisch, zwiebeln, knoblauch, tomatenmark, gewürze
