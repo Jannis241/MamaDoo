@@ -10,14 +10,30 @@ class MamaDooAi():
         self.loswerdeZutaten = []
 
     def evaluate(self, sortedByDifficulty = False, MamaBenötigtFilter = False):
-        loswerdeBonus = 50
-        sattMultiplier = .5
-        ratingMultiplier = 1
-        AufwandMultiplier = -2.5
+        # 1. nicht vorhanden check
+        # 2. so viel auf den score der loswerde Zutaten adden dass sie vorne sind
+        # 3. eine guten balance finden zwischen satt, rating und aufwand (aufwand muss glaube ich negativ sein oder liste reverse musst du gucken)
+        # 4. bei sortedByDifficulty AufwandMultiplier auf -1000 oder so dann
+        # 5. bei MamaBenötigt noch ein check einbauen
+        # 6. dict erstellen -> gericht : score
+        # 7. score berechnen auf alle valid gerichte (die den 1. check überstanden haben) adden
+        # 8. Liste in der richtigen Reihenfolge returnen
 
-        if sortedByDifficulty: 
-            AufwandMultiplier = -1000
-        
+        loswerdeBonus = 1000
+        sattMultiplier = 1
+        ratingMultiplier = 2
+        AufwandMultiplier = -2
+
+        if sortedByDifficulty: AufwandMultiplier = -1000
+
+
+
+
+
+
+
+
+
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
             mamaTestÜberstanden = True
