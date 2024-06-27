@@ -369,6 +369,7 @@ class Manager():
         self.crèmedouble = Zutat("crèmedouble")
         self.cremefraiche = Zutat("cremefraiche")
         self.puddingpulver = Zutat("puddingpulver")
+        self.pudding = Zutat("Pudding")
         self.vanillezucker = Zutat("vanillezucker")
         self.honig = Zutat("honig")
         self.agavendicksaft = Zutat("agavendicksaft")
