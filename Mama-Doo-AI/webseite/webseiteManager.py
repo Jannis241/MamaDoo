@@ -11,6 +11,7 @@ app.secret_key = 'your_secret_key'  # Für Flash-Messages erforderlich
 
 foods_have = []
 foods_not_have = []
+results = []
 
 @app.route('/')
 def home():
@@ -62,29 +63,11 @@ def submit():
     foods_have = []
     foods_not_have = []
 
-    # Store results in session for access on the confirmation page
-    # session['results'] = results
-
     return redirect(url_for('confirmation'))
 
 @app.route('/confirmation')
 def confirmation():
-    for gericht in results:
-        name = gericht.name
-        bewertung = gericht.rating
-        sättigung = gericht.satt
-        schwierigkeit = gericht.difficulty
-        zutatenString = ""
-        for zutat in gericht.zutaten:
-            zutatenString += zutat.name +", "
-        zutaten = zutatenString
-        wann = gericht.wann
-        thermomix = gericht.thermomix
-        mama = gericht.mamaBenötigt
-        extraInfo = gericht.extraInfo
-
-
-    return render_template('submit.html')
+    return render_template('submit.html', results=results)
 
 def startApp():
     app.run(debug=True)

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
-    <title>Submit Confirmation</title>
+    <title>Bestätigungsseite</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Mama Doo AI</a>
+        <a class="navbar-brand" href="#">My Flask App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,20 +22,39 @@
                     <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich nicht habe</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich benutzen will</a>
+                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich habe</a>
                 </li>
             </ul>
         </div>
     </nav>
+
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1>Submit erfolgreich!</h1>
-                <p class="lead">Die Daten wurden erfolgreich übermittelt.</p>
-                <a href="/" class="btn btn-primary">Zurück zur Startseite</a>
+        <h1>Bestätigungsseite</h1>
+        {% if results %}
+            <div class="row">
+                {% for gericht in results %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ gericht.name }}</h5>
+                                <p class="card-text"><strong>Bewertung:</strong> {{ gericht.rating }}</p>
+                                <p class="card-text"><strong>Sättigung:</strong> {{ gericht.satt }}</p>
+                                <p class="card-text"><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
+                                <p class="card-text"><strong>Zutaten:</strong> {{ gericht.zutaten.name|join(', ') }}</p>
+                                <p class="card-text"><strong>Wann:</strong> {{ gericht.wann }}</p>
+                                <p class="card-text"><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
+                                <p class="card-text"><strong>Mama benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
+                                <p class="card-text"><strong>Extra Info:</strong> {{ gericht.extraInfo }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        </div>
+        {% else %}
+            <p>Keine Ergebnisse gefunden.</p>
+        {% endif %}
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
