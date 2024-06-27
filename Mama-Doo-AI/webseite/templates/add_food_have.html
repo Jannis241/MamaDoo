@@ -37,7 +37,7 @@
                 <label for="food">Lebensmittel</label>
                 <input type="text" class="form-control" id="food" name="food" required>
             </div>
-            <button type="submit" class="btn btn-primary">Hinzufügen</button>
+            <button type="submit" class="btn btn-primary">Hinzuf&uuml;gen</button>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -47,7 +47,7 @@
             {% endif %}
         {% endwith %}
         {% if foods_have %}
-        <h2 class="mt-5">Bereits hinzugefügt:</h2>
+        <h2 class="mt-5">Bereits hinzugef&uuml;gt:</h2>
         <ul class="list-group">
             {% for food in foods_have %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
-    <title>Lebensmittel hinzufügen, die ich nicht habe</title>
+    <title>Lebensmittel hinzuf&uuml;gen, die ich nicht habe</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,10 +19,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich nicht habe</a>
+                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzuf&uuml;gen, die ich nicht habe</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich benutzen will</a>
+                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzuf&uuml;gen, die ich benutzen will</a>
                 </li>
             </ul>
         </div>
@@ -31,13 +31,13 @@
         </form>
     </nav>
     <div class="container mt-5">
-        <h1>Lebensmittel hinzufügen, die ich nicht habe</h1>
+        <h1>Lebensmittel hinzuf&uuml;gen, die ich nicht habe</h1>
         <form action="/add-food-not-have" method="post">
             <div class="form-group">
                 <label for="food">Lebensmittel</label>
                 <input type="text" class="form-control" id="food" name="food" required>
             </div>
-            <button type="submit" class="btn btn-primary">Hinzufügen</button>
+            <button type="submit" class="btn btn-primary">Hinzuf&uuml;gen</button>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -47,7 +47,7 @@
             {% endif %}
         {% endwith %}
         {% if foods_not_have %}
-        <h2 class="mt-5">Bereits hinzugefügt:</h2>
+        <h2 class="mt-5">Bereits hinzugef&uuml;gt:</h2>
         <ul class="list-group">
             {% for food in foods_not_have %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
