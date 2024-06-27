@@ -39,7 +39,18 @@ class MamaDooAi():
 
                 # mama check funktioniert noch nicht
                 if MamaBenötigtFilter:
-                    mamaTest = gericht.mamaBenötigt == False
+                    print()
+                    print()
+                    print()
+                    print()
+                    print()
+                    print("MAMA FILTER ACTIVE---")
+                    print()
+                    print()
+                    print()
+                    print()
+                    
+                    mamaTest = gericht.mamaBenötigt.lower().strip().replace(" ","") == "nein"
                     print(f"{gericht.name} failed because of: Mama Check")
 
                 if mamaTest:
