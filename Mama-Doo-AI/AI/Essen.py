@@ -1,6 +1,5 @@
 import Zutaten
 import os
-import csv
 class Essen:
     def __init__(self, name, rating, satt, difficulty, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None):
         self.name = name

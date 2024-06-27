@@ -1,6 +1,5 @@
 import Essen, Zutaten
 import gmail
-from datetime import date
 zutatenManager = Zutaten.Manager()
 class MamaDooAi():
     def __init__(self):

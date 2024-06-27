@@ -1,6 +1,7 @@
 body {
     background-color: #f8f9fa;
     color: #343a40;
+    padding-bottom: 20px; /* Abstand nach unten hinzu */
 }
 
 h1 {
@@ -19,4 +20,40 @@ h1 {
 
 .navbar .btn {
     margin-left: auto;
+}
+
+/* Zusätzliche benutzerdefinierte CSS-Stile für den Filterbereich */
+.filter-box {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-check-label {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Abstand zwischen Checkbox und Label erhöhen */
+    padding: 10px; /* Padding um die Checkbox erhöhen */
+}
+
+/* Anpassungen für Mobilgeräte */
+@media (max-width: 768px) {
+    .form-check-label {
+        font-size: 1rem;
+    }
+    .form-check-input {
+        width: 30px;
+        height: 30px;
+        padding: 12px; /* Anpassung des Paddings für Mobilgeräte */
+    }
 }

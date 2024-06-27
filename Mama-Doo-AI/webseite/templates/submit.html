@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,10 +7,13 @@
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     <style>
         .card {
+            border: none;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            background-color: #ffffff;
         }
+
         .card-header {
             border-radius: 15px 15px 0 0;
             background-color: #007bff;
@@ -18,25 +21,36 @@
             font-size: 1.5rem;
             font-weight: bold;
             text-align: center;
-            padding: 10px;
+            padding: 15px;
         }
+
         .card-body {
-            border-radius: 0 0 15px 15px;
             padding: 20px;
         }
+
         .container {
-            margin-top: 50px;
+            margin-top: 30px;
         }
+
         .btn-primary {
             border-radius: 25px;
             font-size: 1rem;
             font-weight: bold;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
         }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
         .list-group-item {
             border: none;
             padding: 5px 10px;
             font-size: 0.875rem;
         }
+
         .list-group-item:nth-child(even) {
             background-color: #f9f9f9;
         }
@@ -64,22 +78,28 @@
         </div>
     </nav>
     <div class="container">
-        <h1 class="mb-4">Ergebnisse</h1>
-        <form id="filterForm" action="/submit" method="post">
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" value="true" id="mamaBenötigt" name="mamaBenötigt" {% if 'mamaBenötigt' in request.form %} checked {% endif %}>
-                <label class="form-check-label" for="mamaBenötigt">
-                    Nur Mama ben&ouml;tigte Gerichte anzeigen
-                </label>
-            </div>
-            <div class="form-check mb-4">
-                <input class="form-check-input" type="checkbox" value="true" id="sortiereNachSchwierigkeit" name="sortiereNachSchwierigkeit" {% if 'sortiereNachSchwierigkeit' in request.form %} checked {% endif %}>
-                <label class="form-check-label" for="sortiereNachSchwierigkeit">
-                    Nach Schwierigkeit sortieren
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Filter anwenden</button>
-        </form>
+        <h1 class="mb-4 text-center">Ergebnisse</h1>
+        
+        <!-- Filter Box -->
+        <div class="filter-box">
+            <form id="filterForm" action="/submit" method="post">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="true" id="mamaBenötigt" name="mamaBenötigt" {% if 'mamaBenötigt' in request.form %} checked {% endif %}>
+                    <label class="form-check-label" for="mamaBenötigt">
+                        Nur Mama benötigte Gerichte anzeigen
+                    </label>
+                </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" value="true" id="sortiereNachSchwierigkeit" name="sortiereNachSchwierigkeit" {% if 'sortiereNachSchwierigkeit' in request.form %} checked {% endif %}>
+                    <label class="form-check-label" for="sortiereNachSchwierigkeit">
+                        Nach Schwierigkeit sortieren
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Filter anwenden</button>
+            </form>
+        </div>
+        
+        <!-- Ergebnis Karten -->
         <div class="row">
             {% for gericht in results %}
             <div class="col-md-4 mb-4">
@@ -106,10 +126,14 @@
             </div>
             {% endfor %}
         </div>
+        
+        <!-- Zur Startseite Link -->
         <div class="text-center mt-4">
             <a href="/" class="btn btn-primary">Zur Startseite</a>
         </div>
     </div>
+    
+    <!-- JavaScript-Dateien -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
