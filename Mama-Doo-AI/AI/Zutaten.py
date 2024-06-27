@@ -771,6 +771,7 @@ class Manager():
         self.passiertetomaten = Zutat("passiertetomaten")
         self.brötchen = Zutat("brötchen")
         self.dill = Zutat("dill")
+        self.pudding = Zutat("pudding")
         self.gemüsebrühe = Zutat("gemüsebrühe")
         self.gewürze = Zutat("gewürze")
         self.mayo = Zutat("mayo")
