@@ -113,23 +113,46 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // JavaScript, um sicherzustellen, dass nur der ausgewählte Filter aktiviert bleibt
+        // JavaScript, um sicherzustellen, dass nur die ausgewählten Filter aktiviert bleiben
         $(document).ready(function() {
+            // Prüfe und setze die Checkboxen auf checked basierend auf request.form
+            if ('{{ "mamaBenötigt" in request.form }}') {
+                $('#mamaBenötigt').prop('checked', true);
+            }
+            if ('{{ "sortiereNachSchwierigkeit" in request.form }}') {
+                $('#sortiereNachSchwierigkeit').prop('checked', true);
+            }
+    
+            // Überwache Änderungen an den Checkboxen
+            $('#mamaBenötigt').change(function() {
+                if (this.checked) {
+                    $('#sortiereNachSchwierigkeit').prop('checked', false); // Deaktiviere die andere Checkbox
+                }
+            });
+    
+            $('#sortiereNachSchwierigkeit').change(function() {
+                if (this.checked) {
+                    $('#mamaBenötigt').prop('checked', false); // Deaktiviere die andere Checkbox
+                }
+            });
+    
+            // Behandlung des Formularsubmits
             $('#filterForm').submit(function(e) {
                 e.preventDefault(); // Verhindere das Standard-Submit-Verhalten
-
-                // Setze die Checkboxen auf false, wenn sie nicht ausgewählt sind
+    
+                // Setze die Checkboxen auf unchecked, wenn sie nicht ausgewählt sind
                 if (!$('#mamaBenötigt').prop('checked')) {
-                    $('#mamaBenötigt').prop('checked', false);
+                    $('#mamaBenötigt').removeAttr('name'); // Entferne das Attribut 'name', damit der Wert nicht gesendet wird
                 }
                 if (!$('#sortiereNachSchwierigkeit').prop('checked')) {
-                    $('#sortiereNachSchwierigkeit').prop('checked', false);
+                    $('#sortiereNachSchwierigkeit').removeAttr('name'); // Entferne das Attribut 'name', damit der Wert nicht gesendet wird
                 }
-
+    
                 // Sende das Formular
                 this.submit();
             });
         });
     </script>
+    
 </body>
 </html>
