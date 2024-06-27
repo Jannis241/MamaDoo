@@ -74,7 +74,7 @@ def printGerichtStats(gericht):
     print(f"Zutaten: {[zutat.name + ": " + str(zutat.istVorhanden) for zutat in gericht.zutaten]}")
     print(f"Wann: {gericht.wann}")
     print(f"Thermomix: " + gericht.thermomix)
-    print(f"Mama benötigt: " + gericht.thermomix)
+    print(f"Mama benötigt: " + gericht.mamaBenötigt)
     print(f"Extra info: " + gericht.extraInfo)
     print(f"")
 

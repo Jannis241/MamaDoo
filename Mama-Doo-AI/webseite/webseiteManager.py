@@ -54,14 +54,14 @@ def remove_food_have():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    global foods_have, foods_not_have
+    global foods_have, foods_not_have, results
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
     results = mainAI.MDA.evaluate()  # getting the response
 
     # Clear the lists after submission
     foods_have = []
     foods_not_have = []
-    
+
     # Store results in session for access on the confirmation page
     # session['results'] = results
 
@@ -69,7 +69,21 @@ def submit():
 
 @app.route('/confirmation')
 def confirmation():
-    # results = session.get('results', [])
+    for gericht in results:
+        name = gericht.name
+        bewertung = gericht.rating
+        sättigung = gericht.satt
+        schwierigkeit = gericht.difficulty
+        zutatenString = ""
+        for zutat in gericht.zutaten:
+            zutatenString += zutat.name +", "
+        zutaten = zutatenString
+        wann = gericht.wann
+        thermomix = gericht.thermomix
+        mama = gericht.mamaBenötigt
+        extraInfo = gericht.extraInfo
+
+
     return render_template('submit.html')
 
 def startApp():
