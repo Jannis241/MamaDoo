@@ -22,9 +22,9 @@ class MamaDooAi():
         validGerichteCount = 0
 
         loswerdeBonus = 1000
-        sattMultiplier = 1
+        sattMultiplier = .75
         ratingMultiplier = 2
-        AufwandMultiplier = -2
+        AufwandMultiplier = -1.25
 
         mamaTest = True
 
