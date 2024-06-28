@@ -14,7 +14,7 @@ Chicken Nuggets mit Kartoffelpüree, 9, 10, 6, Beides, Ja, Ja,fufu ist lecker,ka
 
 Fischstäbchen / Lachs mit Kartoffelpüree, 7, 9, 5, eher Abends ,Ja, Ja, - ,fischstäbchen, kartoffeln
 
-Fertig Pizza, 10, 10, 1, Beides, Nein, Nein, sehr lecker aber ungesund, fertigpizza
+Fertig Pizza, 10, 10, 1, Beides, Nein, Nein, Notfall, fertigpizza
 
 Selbst gemachte Pizza, 6.5, 8.5, 8,  eher Abends, Nein, Ja, Auf jeden Fall weniger Zwiebeln!! Jannis Bewertung: 4 -> Jesko Bewertung: 9, ananas, zwiebeln, käse, salami, hefe, milch, tomatensoße, salz, zucker
 

@@ -1,14 +1,22 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-import sys
-import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AI')))
-import mainAI
-import Essen
+try:
+    from flask import Flask, render_template, request, redirect, url_for, flash
+except:
+    print("Required module 'Flask' is missing..")
+    exit(-1)
+
+try:
+    import sys
+    import os
+
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AI')))
+    import mainAI
+except:
+    print("Import error..")
+    exit(-1)
 
 app = Flask(__name__, static_folder='static')
-app.secret_key = 'your_secret_key'  # Für Flash-Messages erforderlich
-
+app.secret_key = "secret"
 foods_have = []
 foods_not_have = []
 results = []
@@ -90,7 +98,8 @@ def reset_and_home():
     mainAI.MDA.reinit()
     return redirect(url_for('home'))
 
+def start():
+    app.run(debug=True, host='0.0.0.0')
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

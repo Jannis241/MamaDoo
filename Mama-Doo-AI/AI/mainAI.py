@@ -1,4 +1,7 @@
-import Essen, Zutaten
+try:
+    import Essen, Zutaten
+except:
+    print("Couldnt import 'Essen' and 'Zutaten'...")
 import gmail
 zutatenManager = Zutaten.Manager()
 class MamaDooAi():
