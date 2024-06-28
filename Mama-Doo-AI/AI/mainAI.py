@@ -62,15 +62,19 @@ class MamaDooAi():
                     possibleGerichte[gericht] = score
                     validGerichteCount += 1
                     
-                    print(f"Name: {gericht.name} - Score: {score}")
+                    
 
         
+    
+
         if len(possibleGerichte) != validGerichteCount:
             print("Something went wrong the evaluation dict...")
             exit(-1)
 
        
         sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
+        for gericht in sorted_gerichte:
+            print(f"Name: {gericht.name} -> {possibleGerichte[gericht]}")
         print()
         print("AI found", len(sorted_gerichte),"possibilities..")
         print(len(self.alleGerichte) - len(sorted_gerichte), "got sorted out..")
