@@ -27,7 +27,7 @@ class MamaDooAi():
         loswerdeBonus = 1000
         sattMultiplier = .75
         ratingMultiplier = 2
-        AufwandMultiplier = -1.25
+        AufwandMultiplier = -1.5
 
         mamaTest = True
 
