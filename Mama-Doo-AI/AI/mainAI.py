@@ -38,15 +38,12 @@ class MamaDooAi():
         
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
-            print("----------------")
-            print("Checking:", gericht.name)
             score = 0
             if self.canEssenBeMade(gericht): # alle zutaten sind da
 
                 # mama check funktioniert noch nicht
                 if MamaBenötigtFilter:                    
                     mamaTest = gericht.mamaBenötigt.lower().strip().replace(" ","") == "nein"
-                    print(f"{gericht.name} failed because of: Mama Check")
 
                 if mamaTest:
                     aufwandScore = gericht.difficulty * AufwandMultiplier # desto mehr der Aufwand ist desto mehr geht der aufwand score ins negative
@@ -60,7 +57,7 @@ class MamaDooAi():
                         for loswerdeZutat in self.loswerdeZutaten:
                             if zutat.name == loswerdeZutat.name:
                                 score += loswerdeBonus
-                                print(f"{gericht.name} got: loswerde Bonus")
+
 
                     possibleGerichte[gericht] = score
                     validGerichteCount += 1
@@ -74,29 +71,28 @@ class MamaDooAi():
 
        
         sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
+        print()
         print("AI found", len(sorted_gerichte),"possibilities..")
         print(len(self.alleGerichte) - len(sorted_gerichte), "got sorted out..")
-        print(f"filter active -> Mama Filter: {MamaBenötigtFilter} - Schwierigkeitsfilter: {sortedByDifficulty}")
-        
+        print()
+     
         return sorted_gerichte
         
 
     def reinit(self):
         # alle zutaten werden resetet falls der user nochmal neue angaben machen möchte
         for zutat in self.loswerdeZutaten:
-            print("reseted: ", zutat.name)
             zutat.reset()
         
             
         for zutat in self.nichtVorhandeneZutate:
-            print("reseted: ", zutat.name)
             zutat.reset()
             
         # init alle variablen neu falls der user noch einmal von vorne anfängt
         self.loswerdeZutaten = []
         self.nichtVorhandeneZutate = []
         self.alleGerichte = Essen.alleGerichte
-        print("reseted ai vars")
+        print("Reseted AI parameters...")
         
     
     def checkIfZutatExists(self, zutat):
@@ -204,6 +200,10 @@ else: # falls es ein import ist
     print("Main AI got imported..")
     print()
     MDA = MamaDooAi()
+    print("Starting AI..")
+    print()
+    print()
+    print()
 
 
 

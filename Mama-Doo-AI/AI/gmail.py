@@ -1,21 +1,4 @@
-print()
-print()
-print()
-print()
-print()
-print()
-print()
-print()
 print("gmail service not working rn.......")
-print("gmail service not working rn.......")
-print("gmail service not working rn.......")
-print("gmail service not working rn.......")
-print("gmail service not working rn.......")
-print("gmail service not working rn.......")
-print()
-print()
-print()
-
 
 
 def sendMail(content, subject):
