@@ -6,45 +6,45 @@
 ###
 
 
-Rührei mit Speck, 8, 10, 3, Abends, Nein, Nein, Speck ist sehr wichtig ,eier, speck, milch
+Rührei mit Speck, 8, 10, 3, 8, Abends, Nein, Nein, Speck ist sehr wichtig ,eier, speck, milch
 
-Spiegel Ei mit Bratkartoffeln, 3.5, 7, 5, Beides, Nein, Ja, - , eier, kartoffeln
+Spiegel Ei mit Bratkartoffeln, 3.5, 7, 5, 7, Beides, Nein, Ja, - , eier, kartoffeln
 
-Chicken Nuggets mit Kartoffelpüree, 9, 10, 6, Beides, Ja, Ja,fufu ist lecker,kartoffeln, chickennuggets
+Chicken Nuggets mit Kartoffelpüree, 9, 10, 6, 6, Beides, Ja, Ja,fufu ist lecker,kartoffeln, chickennuggets
 
-Fischstäbchen / Lachs mit Kartoffelpüree, 7, 9, 5, eher Abends ,Ja, Ja, - ,fischstäbchen, kartoffeln
+Fischstäbchen / Lachs mit Kartoffelpüree, 7, 9, 5, 7, eher Abends ,Ja, Ja, - ,fischstäbchen, kartoffeln
 
-Fertig Pizza, 10, 10, 1, Beides, Nein, Nein, Notfall, fertigpizza
+Fertig Pizza, 10, 10, 1, 2, Beides, Nein, Nein, Notfall, fertigpizza
 
-Selbst gemachte Pizza, 6.5, 8.5, 8,  eher Abends, Nein, Ja, Auf jeden Fall weniger Zwiebeln!! Jannis Bewertung: 4 -> Jesko Bewertung: 9, ananas, zwiebeln, käse, salami, hefe, milch, tomatensoße, salz, zucker
+Selbst gemachte Pizza, 6.5, 8.5, 8, 6,  eher Abends, Nein, Ja, Auf jeden Fall weniger Zwiebeln!! Jannis Bewertung: 4 -> Jesko Bewertung: 9, ananas, zwiebeln, käse, salami, hefe, milch, tomatensoße, salz, zucker
 
-Spaghetti Bolognese, 8.5, 5.5, 5, Beides, Ja, Nein, Es kommt sehr auf die Soße drauf an (auf keinen Fall die orangene nehmen), spaghetti, hackfleisch, tomatensoße
-
-
-Wraps, 9, 9, 6, Beides, Nein, Nein,nicht zu oft, wraps, hähnchenfleisch, salat, tomaten, gewürze, zwiebeln
-
-Reis mit Hähnchenfleisch, 8, 9, 4, Beides, Ja, Nein, seperate Soße (diese Weiße) und Ketchup , reis, hähnchenfleisch
+Spaghetti Bolognese, 8.5, 5.5, 5, 8, Beides, Ja, Nein, Es kommt sehr auf die Soße drauf an (auf keinen Fall die orangene nehmen), spaghetti, hackfleisch, tomatensoße
 
 
-Burger, 10, 10, 6, Beides, Nein, Ja, -, bürgerbrötchen, hackfleisch, käse, salat, tomaten, zwiebeln, gurken, ketchup, mayo
+Wraps, 9, 9, 6, 8, Beides, Nein, Nein,nicht zu oft, wraps, hähnchenfleisch, salat, tomaten, gewürze, zwiebeln
+
+Reis mit Hähnchenfleisch, 8, 9, 4, 9, Beides, Ja, Nein, seperate Soße (diese Weiße) und Ketchup , reis, hähnchenfleisch
 
 
-Nudel Salat mit Fleisch, 10, 7, 6, Beides, Nein, Ja, kann man gut als Beilage machen, nudeln, schinken, salatcreme, gewürze, salzgurken, käse, paprika
+Burger, 10, 10, 6, 7, Beides, Nein, Ja, -, bürgerbrötchen, hackfleisch, käse, salat, tomaten, zwiebeln, gurken, ketchup, mayo
 
-Kartoffel ecken, 8.5, 9.5 , 5, eher Abend, Nein, Ja, mit Zaziki -> 9/10, kartoffeln, öl, salz, gewürze
 
-Auflauf, 5, 8, 5, eher Abend, Nein, Ja, Jannis: 1 - Jesko: 9, nudeln, käse, gewürze, hackfleisch
+Nudel Salat mit Fleisch, 10, 7, 6, 7, Beides, Nein, Ja, kann man gut als Beilage machen, nudeln, schinken, salatcreme, gewürze, salzgurken, käse, paprika
 
-Mörengemüse, 6, 7, 7, Beides, Nein, Ja, Viele Würste - KEINE Zwiebeln,möhren, butter, gewürze, kartoffeln
+Kartoffel ecken, 8.5, 9.5 , 5, 6.5, eher Abend, Nein, Ja, mit Zaziki -> 9/10, kartoffeln, öl, salz, gewürze
 
-Kaiserschmarn, 9.5, 6.5, 5, Beides, Nein, Nein, viel Apfelmus und Puderzucker, mehl, milch, eier, zucker, butter, puderzucker, apfelmus
-Crepes, 9, 6.5, 4, Mittag, Ja, Nein, Nutella ,mehl, milch, eier, zucker, nutella
-Milchreis, 7, 4.5, 3, eher Mittag, Ja, Nein, nicht zu oft, milch, milchreis, zucker, zimt
-Grießbrei, 7.25, 4.5, 4, eher Mittag, Ja, Nein, -,milch, grieß, zucker, zimt
-Pizzabrötchen, 6.5, 7, 7, immer, Nein, Ja, -,brötchen, salami, käse, tomatenmark, oregano, gewürze
-Germknödel, 9.5, 8, 8, immer, Ja, Ja, mit Vanillesoße ,mehl, hefe, milch, zucker, butter, pflaumenmus, Vanillesoße
-Gyros mit Reis, 8, 9, 5, immer, Nein, Nein, -, gyros, reis, zwiebeln, knoblauch, gewürze
-Gyros mit Nudeln, 9, 9, 5, immer, Nein, Nein, -, gyros, nudeln, zwiebeln, knoblauch, gewürze
-Chili con carne, 4.5, 5, 3, eher Mittags, Nein, Ja, -, bohnen, tomaten, zwiebeln, knoblauch, chili, gewürze
-Nudeln mit Hackfleisch, 10, 8, 5, Beides, Nein, Nein, mit Apfelmus,nudeln, hackfleisch, zwiebeln, knoblauch, tomatenmark, gewürze
-Reis mit Hackfleisch, 8, 7, 5, Beides, Nein, Nein, mit Apfelmus,reis, hackfleisch, zwiebeln, knoblauch, gemüsebrühe, gewürze
+Auflauf, 5, 8, 5, 7, eher Abend, Nein, Ja, Jannis: 1 - Jesko: 9, nudeln, käse, gewürze, hackfleisch
+
+Mörengemüse, 6, 7, 7, 8.5, Beides, Nein, Ja, Viele Würste - KEINE Zwiebeln,möhren, butter, gewürze, kartoffeln
+
+Kaiserschmarn, 9.5, 6.5, 5, 5, Beides, Nein, Nein, viel Apfelmus und Puderzucker, mehl, milch, eier, zucker, butter, puderzucker, apfelmus
+Crepes, 9, 6.5, 4, 4, Mittag, Ja, Nein, Nutella ,mehl, milch, eier, zucker, nutella
+Milchreis, 7, 4.5, 3, 5, eher Mittag, Ja, Nein, nicht zu oft, milch, milchreis, zucker, zimt
+Grießbrei, 7.25, 4.5, 6, 6, eher Mittag, Ja, Nein, -,milch, grieß, zucker, zimt
+Pizzabrötchen, 6.5, 7, 8, 7.5, immer, Nein, Ja, -,brötchen, salami, käse, tomatenmark, oregano, gewürze
+Germknödel, 9.5, 8, 8, 6, immer, Ja, Ja, mit Vanillesoße ,mehl, hefe, milch, zucker, butter, pflaumenmus, Vanillesoße
+Gyros mit Reis, 8, 9, 5, 7.5, immer, Nein, Nein, -, gyros, reis, zwiebeln, knoblauch, gewürze
+Gyros mit Nudeln, 9, 9, 5, 7.5, immer, Nein, Nein, -, gyros, nudeln, zwiebeln, knoblauch, gewürze
+Chili con carne, 4.5, 5, 3, 7, eher Mittags, Nein, Ja, -, bohnen, tomaten, zwiebeln, knoblauch, chili, gewürze
+Nudeln mit Hackfleisch, 10, 8, 5, 8, Beides, Nein, Nein, mit Apfelmus,nudeln, hackfleisch, zwiebeln, knoblauch, tomatenmark, gewürze
+Reis mit Hackfleisch, 8, 7, 5, 8, Beides, Nein, Nein, mit Apfelmus,reis, hackfleisch, zwiebeln, knoblauch, gemüsebrühe, gewürze

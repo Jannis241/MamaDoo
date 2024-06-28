@@ -1,7 +1,7 @@
 import Zutaten
 import os
 class Essen:
-    def __init__(self, name, rating, satt, difficulty, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None):
+    def __init__(self, name, rating, satt, difficulty, gesund, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None, ):
         self.name = name
         self.rating = rating
         self.satt = satt
@@ -12,6 +12,7 @@ class Essen:
         self.thermomix = tm 
         self.mamaBenötigt = MamaBenötigt
         self.extraInfo = extraInfo
+        self.gesund = gesund
 
 
 alleGerichte = []
@@ -31,12 +32,14 @@ def read_configurations(filename):
                     rating = float(parts[1].strip())
                     satt = float(parts[2].strip())
                     difficulty = float(parts[3].strip())
-                    wann = parts[4].strip()
+                    gesund = float(parts[4].strip())
+                    wann = parts[5].strip()
                     zutatenListe = []
-                    tm = parts[5].strip()
-                    mb = parts[6].strip()
-                    extraInfo = parts[7].strip()
-                    for i in range(8, len(parts)):
+                    tm = parts[6].strip()
+                    mb = parts[7].strip()
+                    extraInfo = parts[8].strip()
+                    
+                    for i in range(9, len(parts)):
                         word = parts[i].strip().lower()
                         zutatenListe.append(word)
                 
@@ -52,7 +55,7 @@ def read_configurations(filename):
                             print("Zutat", zutat_name, "does not exist.")
                             exit()
                     
-                    essen = Essen(name, rating, satt, difficulty, acutalZutatenListe, wann, tm, mb, extraInfo)
+                    essen = Essen(name, rating, satt, difficulty, gesund, acutalZutatenListe, wann, tm, mb, extraInfo)
                     alleGerichte.append(essen)
     
     except FileNotFoundError:

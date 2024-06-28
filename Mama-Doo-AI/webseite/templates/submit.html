@@ -54,23 +54,26 @@
         .list-group-item:nth-child(even) {
             background-color: #f9f9f9;
         }
-
-        .navbar .home-button {
-            margin-left: auto;
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-        }
-
+        
     </style>
     <title>Ergebnisse</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">Mama Doo AI</a>
-        <a href="/reset-and-home" class="btn btn-primary home-button">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/reset-and-home">Home</a>
+                </li>
+            </ul>
+        </div>
     </nav>
+
+    
     <div class="container">
         <h1 class="mb-4 text-center">Ergebnisse</h1>
         
@@ -89,6 +92,24 @@
                         Nach Schwierigkeit sortieren
                     </label>
                 </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" value="true" id="sortiereNachRating" name="sortiereNachRating" {% if 'sortiereNachRating' in request.form %} checked {% endif %}>
+                    <label class="form-check-label" for="sortiereNachRating">
+                        Nach Bewertung sortieren
+                    </label>
+                </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" value="true" id="sortiereNachSatt" name="sortiereNachSatt" {% if 'sortiereNachSatt' in request.form %} checked {% endif %}>
+                    <label class="form-check-label" for="sortiereNachSatt">
+                        Nach Sättigung sortieren
+                    </label>
+                </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" value="true" id="sortiereNachGesund" name="sortiereNachGesund" {% if 'sortiereNachGesund' in request.form %} checked {% endif %}>
+                    <label class="form-check-label" for="sortiereNachGesund">
+                        Nach Gesundheit sortieren
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary mt-3">Filter anwenden</button>
             </form>
         </div>
@@ -105,6 +126,7 @@
                         <p><strong>Bewertung:</strong> {{ gericht.rating }}</p>
                         <p><strong>Sättigung:</strong> {{ gericht.satt }}</p>
                         <p><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
+                        <p><strong>Gesund:</strong> {{ gericht.gesund }}</p>
                         <p><strong>Wann:</strong> {{ gericht.wann }}</p>
                         <p><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
                         <p><strong>Mama Benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
@@ -134,7 +156,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('form');
             const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-    
+
             // Restore checkbox states from localStorage
             checkboxes.forEach(checkbox => {
                 const storedValue = localStorage.getItem(checkbox.name);
@@ -142,16 +164,16 @@
                     checkbox.checked = storedValue === 'true';
                 }
             });
-    
+
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 const formData = new FormData(form);
-    
+
                 // Save checkbox states to localStorage
                 checkboxes.forEach(checkbox => {
                     localStorage.setItem(checkbox.name, checkbox.checked);
                 });
-    
+
                 fetch(form.action, {
                     method: 'POST',
                     body: formData
@@ -165,6 +187,5 @@
             });
         });
     </script>
-    
 </body>
 </html>

@@ -5,15 +5,12 @@ except:
     print("Required module 'Flask' is missing..")
     exit(-1)
 
-try:
-    import sys
-    import os
 
-    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AI')))
-    import mainAI
-except:
-    print("Import error..")
-    exit(-1)
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AI')))
+import mainAI
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = "secret"
@@ -68,6 +65,10 @@ def submit():
     # Erfasse die Checkbox-Werte
     mamaBenötigt = request.form.get('mamaBenötigt') == 'true'
     sortiereNachSchwierigkeit = request.form.get('sortiereNachSchwierigkeit') == 'true'
+
+    sortedByRating = request.form.get('sortiereNachRating') == 'true'
+    sortedBySatt = request.form.get('sortiereNachSatt') == 'true'
+    sortedByGesund = request.form.get('sortiereNachGesund') == 'true'
     print("-------")
     print()
     print(f"Set User Info of MDA --- essen was verbraucht werden soll: {foods_have} -- essen welches nicht vorhanden ist: {foods_not_have}")
@@ -79,7 +80,7 @@ def submit():
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
     
     # Hier werden die Parameter an die evaluate-Funktion übergeben
-    results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt)
+    results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt,sortedByRating,sortedByGesund, sortedBySatt)
     
     # Clear the lists after submission
 

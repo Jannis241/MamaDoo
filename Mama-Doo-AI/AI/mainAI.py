@@ -1,7 +1,6 @@
-try:
-    import Essen, Zutaten
-except:
-    print("Couldnt import 'Essen' and 'Zutaten'...")
+
+import Essen, Zutaten
+
 import gmail
 zutatenManager = Zutaten.Manager()
 class MamaDooAi():
@@ -12,7 +11,7 @@ class MamaDooAi():
         self.nichtVorhandeneZutate = []
         self.loswerdeZutaten = []
 
-    def evaluate(self, sortedByDifficulty = False, MamaBenötigtFilter = False):
+    def evaluate(self, sortedByDifficulty = False, MamaBenötigtFilter = False, sortedByRating = False, sortedByGesund = False, sortedBySatt = False):
         # 1. nicht vorhanden check
         # 2. so viel auf den score der loswerde Zutaten adden dass sie vorne sind
         # 3. eine guten balance finden zwischen satt, rating und aufwand (aufwand muss glaube ich negativ sein oder liste reverse musst du gucken)
@@ -24,15 +23,19 @@ class MamaDooAi():
 
         validGerichteCount = 0
 
-        loswerdeBonus = 1000
-        sattMultiplier = .75
+        loswerdeBonus = 100000
+        sattMultiplier = 1
+        gesundMultiplier = 1.5
         ratingMultiplier = 2
         AufwandMultiplier = -1.5
 
         mamaTest = True
 
-        if sortedByDifficulty: AufwandMultiplier = -500
-
+        if sortedByDifficulty: AufwandMultiplier = -100
+        if sortedByRating: ratingMultiplier = 100
+        if sortedByGesund: gesundMultiplier = 100
+        if sortedBySatt: sattMultiplier = 100
+        
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
             print("----------------")
@@ -49,8 +52,9 @@ class MamaDooAi():
                     aufwandScore = gericht.difficulty * AufwandMultiplier # desto mehr der Aufwand ist desto mehr geht der aufwand score ins negative
                     ratingScore = gericht.rating * ratingMultiplier
                     sattScore = gericht.satt * sattMultiplier
+                    gesundScore = gericht.gesund * gesundMultiplier
 
-                    score += aufwandScore + ratingScore + sattScore
+                    score += aufwandScore + ratingScore + sattScore + gesundScore
 
                     for zutat in gericht.zutaten:
                         for loswerdeZutat in self.loswerdeZutaten:
