@@ -31,7 +31,18 @@ h1 {
 .footer .text-muted {
     font-size: 0.9rem;
 }
-
+.submit-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+.navbar-toggler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
 /* Zusätzliche benutzerdefinierte CSS-Stile für den Filterbereich */
 .filter-box {
     background-color: #f8f9fa;

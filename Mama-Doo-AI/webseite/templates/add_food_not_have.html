@@ -6,27 +6,16 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     <title>Lebensmittel hinzuf&uuml;gen, die ich nicht habe</title>
-    <style>
-        /* Zusätzlicher CSS-Stil für den Submit-Button */
-        .navbar .submit-button {
-            display: block;
-        }
-        @media (max-width: 991.98px) {
-            .navbar .submit-button.collapsed {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Mama Doo AI</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
+        <form id="submitForm" action="/submit" method="post" class="submit-button">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a class="navbar-brand mx-auto" href="#">Mama Doo AI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form id="submitForm" action="/submit" method="post" class="ml-auto submit-button">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
