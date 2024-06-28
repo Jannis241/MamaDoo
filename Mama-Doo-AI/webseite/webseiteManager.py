@@ -62,8 +62,11 @@ def submit():
     sortiereNachSchwierigkeit = request.form.get('sortiereNachSchwierigkeit') == 'true'
     print("-------")
     print()
-    print(f"Set User Info of MDA; essen was verbraucht werden soll: {foods_have} -- essen welches nicht vorhanden ist: {foods_not_have}")
+    print(f"Set User Info of MDA --- essen was verbraucht werden soll: {foods_have} -- essen welches nicht vorhanden ist: {foods_not_have}")
     print()
+    print("MDA FILTER: ")
+    print("Mama benötigt: ", mamaBenötigt)
+    print("Nach schwierigkeit sortiert: ", sortiereNachSchwierigkeit)
     print("-------")
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
     

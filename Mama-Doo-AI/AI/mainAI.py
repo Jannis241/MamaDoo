@@ -38,18 +38,7 @@ class MamaDooAi():
             if self.canEssenBeMade(gericht): # alle zutaten sind da
 
                 # mama check funktioniert noch nicht
-                if MamaBenötigtFilter:
-                    print()
-                    print()
-                    print()
-                    print()
-                    print()
-                    print("MAMA FILTER ACTIVE---")
-                    print()
-                    print()
-                    print()
-                    print()
-                    
+                if MamaBenötigtFilter:                    
                     mamaTest = gericht.mamaBenötigt.lower().strip().replace(" ","") == "nein"
                     print(f"{gericht.name} failed because of: Mama Check")
 
@@ -73,16 +62,15 @@ class MamaDooAi():
 
         
         if len(possibleGerichte) != validGerichteCount:
-            print()
-            print()
-            print()
-            print()
-            print()
             print("Something went wrong the evaluation dict...")
-            print()
             exit(-1)
 
+       
         sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
+        print("AI found", len(sorted_gerichte),"possibilities..")
+        print(len(self.alleGerichte) - len(sorted_gerichte), "got sorted out..")
+        print(f"filter active -> Mama Filter: {MamaBenötigtFilter} - Schwierigkeitsfilter: {sortedByDifficulty}")
+        
         return sorted_gerichte
         
 
