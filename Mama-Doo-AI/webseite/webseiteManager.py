@@ -16,6 +16,7 @@ app = Flask(__name__, static_folder='static')
 app.secret_key = "secret"
 foods_have = []
 foods_not_have = []
+shopping_list = []
 results = []
 
 @app.route('/')
@@ -98,6 +99,31 @@ def reset_and_home():
     foods_not_have = []
     mainAI.MDA.reinit()
     return redirect(url_for('home'))
+
+
+@app.route('/shopping-list', methods=['GET', 'POST'])
+def show_shopping_list():
+    if request.method == 'POST':
+        food = request.form['food']
+        if food and food not in shopping_list:
+            shopping_list.append(food)
+    return render_template('Einkaufsliste.html', shopping_list=shopping_list)
+
+@app.route('/add-food-shopping-list', methods=['POST'])
+def add_food_shopping_list():
+    food = request.form['food']
+    if mainAI.MDA.checkIfZutatExists(food):
+        if food and food not in shopping_list:
+            shopping_list.append(food)
+        return redirect(url_for('show_shopping_list'))
+
+@app.route('/remove-food-shopping-list', methods=['POST'])
+def remove_food_shopping_list():
+    food_to_remove = request.form['food']
+    if food_to_remove in shopping_list:
+        shopping_list.remove(food_to_remove)
+    return redirect(url_for('show_shopping_list'))
+
 
 def start():
     app.run(debug=True, host='0.0.0.0')
