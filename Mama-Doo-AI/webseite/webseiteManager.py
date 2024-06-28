@@ -19,6 +19,14 @@ foods_not_have = []
 shopping_list = []
 results = []
 
+global mamaBenötigt, sortedByGesund, sortedByRating, sortedBySatt, sortiereNachSchwierigkeit
+
+mamaBenötigt = "false"
+sortiereNachSchwierigkeit = "false"
+sortedByRating =  "false"
+sortedBySatt = "false"
+sortedByGesund = "false"
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -93,11 +101,20 @@ def confirmation():
 
 @app.route('/reset-and-home')
 def reset_and_home():
+    
     print("RE-INITIALIZE EVERYTHING.....")
-    global foods_have, foods_not_have
+    global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedByGesund, sortedBySatt
     foods_have = []
     foods_not_have = []
     mainAI.MDA.reinit()
+
+    # reset all filters
+    mamaBenötigt = "false"
+    sortiereNachSchwierigkeit = "false"
+    sortedByRating =  "false"
+    sortedBySatt = "false"
+    sortedByGesund = "false"
+
     return redirect(url_for('home'))
 
 
@@ -112,11 +129,9 @@ def show_shopping_list():
 @app.route('/add-food-shopping-list', methods=['POST'])
 def add_food_shopping_list():
     food = request.form['food']
-    if mainAI.MDA.checkIfZutatExists(food):
-        if food and food not in shopping_list:
-            shopping_list.append(food)
-        return redirect(url_for('show_shopping_list'))
-
+    if food and food not in shopping_list:
+        shopping_list.append(food)
+    return redirect(url_for('show_shopping_list'))
 @app.route('/remove-food-shopping-list', methods=['POST'])
 def remove_food_shopping_list():
     food_to_remove = request.form['food']
