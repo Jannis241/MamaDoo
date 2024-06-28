@@ -54,22 +54,22 @@
         .list-group-item:nth-child(even) {
             background-color: #f9f9f9;
         }
+
+        .navbar .home-button {
+            margin-left: auto;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
     </style>
     <title>Ergebnisse</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">Mama Doo AI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/reset-and-home">Home</a>
-                </li>
-            </ul>
-        </div>
+        <a href="/reset-and-home" class="btn btn-primary home-button">Home</a>
     </nav>
     <div class="container">
         <h1 class="mb-4 text-center">Ergebnisse</h1>
