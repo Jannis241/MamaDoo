@@ -809,19 +809,12 @@ class Manager():
         self.kakaopulver = Zutat("kakaopulver")
 
 
-
-
-
-
-
 class Zutat():
     def __init__(self, name) -> None:
         self.name = name
-        self.istVorhanden = 0 # 1 will loswerden, 0 habe ich (default), -1 habe ich nicht
+        # 1 will loswerden, 0 habe ich (default), -1 habe ich nicht
+        self.istVorhanden = 0
         self.isAddOn = False
 
     def reset(self):
         self.istVorhanden = 0
-
-
-

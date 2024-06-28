@@ -2,5 +2,6 @@
     "python.analysis.extraPaths": [
         "./webseite",
         "./AI"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }

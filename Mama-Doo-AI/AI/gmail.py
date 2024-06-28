@@ -23,7 +23,7 @@ def sendMail(content, subject):
         smtpserver.ehlo()
         smtpserver.starttls()
         smtpserver.ehlo()
-        smtpserver.login("@gmail.com","")
+        smtpserver.login("@gmail.com", "")
         smtpserver.sendmail(
             sender_email, receiver_email, message.as_string()
         )
