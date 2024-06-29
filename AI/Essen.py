@@ -1,4 +1,4 @@
-import Zutaten
+from AI import Zutaten
 import os
 
 

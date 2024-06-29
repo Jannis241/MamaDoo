@@ -5,10 +5,7 @@ except:
     raise Exception("Required module 'Flask' is missing..")
 
 
-import sys
-
-sys.path.append('./AI')
-import mainAI
+from AI import mainAI
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = "secret"

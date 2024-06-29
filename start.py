@@ -1,8 +1,4 @@
-import sys
 import os
-
-
-sys.path.append('./webseite')
 try:
     import flask
     print()
@@ -14,12 +10,12 @@ except:
     print("Installing Flask now..")
     print()
     try:
-        os.system("pip install -r requirements.txt")
+        os.system(r"pip install -r requirements.txt")
         print("Installed requirements: successfully")
     except:
         raise Exception("Failed to install requirements")
 try:
-    import webseiteManager
+    from webseite import webseiteManager
     webseiteManager.start()
 
 except:

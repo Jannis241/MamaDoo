@@ -1,8 +1,8 @@
 
-import Essen
-import Zutaten
+from AI import Essen
+from AI import Zutaten
 
-import gmail
+from AI import gmail
 
 
 class MamaDooAi():
