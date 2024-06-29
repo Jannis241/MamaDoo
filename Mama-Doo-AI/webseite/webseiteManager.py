@@ -2,14 +2,13 @@
 try:
     from flask import Flask, render_template, request, redirect, url_for, flash
 except:
-    print("Required module 'Flask' is missing..")
-    exit(-1)
+    raise("Required module 'Flask' is missing..")
 
 
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AI')))
+sys.path.append('./AI')
 import mainAI
 
 app = Flask(__name__, static_folder='static')
@@ -29,6 +28,8 @@ sortedByGesund = "false"
 
 @app.route('/')
 def home():
+    os.system("cls")
+    print("started all services..")
     print("rendering home template")
     return render_template('index.html')
 
@@ -160,8 +161,12 @@ def remove_food_shopping_list():
 
 
 def start():
+    print()
     print("Starting website..")
+    print()
+    print()
     app.run(debug=False, host='0.0.0.0')
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

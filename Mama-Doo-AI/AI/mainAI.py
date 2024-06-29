@@ -3,13 +3,13 @@ import Essen
 import Zutaten
 
 import gmail
-zutatenManager = Zutaten.Manager()
+
 
 
 class MamaDooAi():
     def __init__(self):
         self.alleGerichte = Essen.alleGerichte
-
+        self.zutatenManager = Zutaten.Manager()
         self.nichtVorhandeneZutate = []
         self.loswerdeZutaten = []
 
@@ -90,7 +90,7 @@ class MamaDooAi():
     def checkIfZutatExists(self, zutat):
         try:
             # veruschen die zutat im Manager zu finden, falls es sie nicht gibt, gibt es ein error
-            getattr(zutatenManager, zutat.strip().lower().replace(" ", ""))
+            getattr(self.zutatenManager, zutat.strip().lower().replace(" ", ""))
             return True
         except:
             return False
@@ -98,10 +98,10 @@ class MamaDooAi():
     def setUserInfo(self, loswerdeList, nichtVorhandenList):
         for zutatString in loswerdeList:
             self.loswerdeZutaten.append(
-                getattr(zutatenManager, zutatString.strip().lower().replace(" ", "")))
+                getattr(self.zutatenManager, zutatString.strip().lower().replace(" ", "")))
         for zutatString in nichtVorhandenList:
             self.nichtVorhandeneZutate.append(
-                getattr(zutatenManager, zutatString.strip().lower().replace(" ", "")))
+                getattr(self.zutatenManager, zutatString.strip().lower().replace(" ", "")))
 
         for zutat in self.loswerdeZutaten:
             zutat.istVorhanden = 1
@@ -109,7 +109,7 @@ class MamaDooAi():
             zutat.istVorhanden = -1
 
     def getVorratOfZutat(self, zutat):
-        return getattr(zutatenManager, zutat.name).istVorhanden
+        return getattr(self.zutatenManager, zutat.name).istVorhanden
 
     def canEssenBeMade(self, essen):
         for zutat in essen.zutaten:
@@ -119,5 +119,7 @@ class MamaDooAi():
         return True
 
 
-
 MDA = MamaDooAi()
+
+
+

@@ -1,8 +1,12 @@
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'webseite')))
 
+sys.path.append('./webseite')
+os.system("pip install -r requirements.txt")
+os.remove("requirements.txt")
 import webseiteManager
 webseiteManager.start()
+
+
 
