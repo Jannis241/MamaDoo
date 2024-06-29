@@ -71,17 +71,5 @@ def read_configurations(filename):
 script_dir = os.path.dirname(__file__)
 filename = os.path.join(script_dir, 'config.txt')
 read_configurations(filename)
-
-
-def printGerichtStats(gericht):
-    print(f"Name: {gericht.name}")
-    print(f"Bewertung: {gericht.rating}")
-    print(f"Sättigung: {gericht.satt}")
-    print(f"Schwierigkeit: {gericht.difficulty}")
-    print(f"Zutaten: {[zutat.name + ": " + str(zutat.istVorhanden)
-          for zutat in gericht.zutaten]}")
-    print(f"Wann: {gericht.wann}")
-    print(f"Thermomix: " + gericht.thermomix)
-    print(f"Mama benötigt: " + gericht.mamaBenötigt)
-    print(f"Extra info: " + gericht.extraInfo)
-    print(f"")
+print()
+print("Reading config.txt file..")

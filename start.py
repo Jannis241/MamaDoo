@@ -1,8 +1,18 @@
 import os
+print()
+print()
+print()
+print()
+print()
+print()
+print()
+print()
+print()
+
 try:
     import flask
     print()
-    print("Flask already installed: True")
+    print("Flask is already installed")
 except:
     print("Import Module 'Flask' is missing..")
     print()
