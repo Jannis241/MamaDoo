@@ -4,7 +4,6 @@ try:
 except:
     raise Exception("Required module 'Flask' is missing..")
 
-
 from AI import mainAI
 
 app = Flask(__name__, static_folder='static')
@@ -145,7 +144,8 @@ def reset_and_home():
 
 @app.route('/shopping-list', methods=['GET', 'POST'])
 def show_shopping_list():
-    
+     
+    print()
     print()
     print("rendering Einkaufsliste page")
     print()
