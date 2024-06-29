@@ -1,5 +1,6 @@
-from AI import Zutaten
 import os
+
+from AI import Zutaten
 
 
 class Essen:

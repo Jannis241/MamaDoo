@@ -1,10 +1,8 @@
-from unittest.mock import patch
-import unittest
-import mainAI
-import Zutaten
-import Essen
 import sys
-sys.path.append('./AI')
+import unittest
+from unittest.mock import patch
+
+from AI import Essen, Zutaten, mainAI
 
 
 class TestMamaDooAi(unittest.TestCase):

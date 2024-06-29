@@ -1,6 +1,6 @@
 
 try:
-    from flask import Flask, render_template, request, redirect, url_for, flash
+    from flask import Flask, flash, redirect, render_template, request, url_for
 except:
     raise Exception("Required module 'Flask' is missing..")
 

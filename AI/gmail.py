@@ -7,8 +7,8 @@ print()
 
 def sendMail(content, subject):
     import smtplib
-    from email.mime.text import MIMEText
     from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
 
     sender_email = "@gmail.com"
     receiver_email = "@gmail.com"
