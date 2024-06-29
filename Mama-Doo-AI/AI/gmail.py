@@ -1,7 +1,7 @@
 
 
 print()
-print("gmail service deactivated: True")
+print("gmail service active: False")
 print()
 
 
