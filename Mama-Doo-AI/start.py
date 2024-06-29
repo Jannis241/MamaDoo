@@ -17,9 +17,14 @@ except:
         os.system("pip install -r requirements.txt")
         print("Installed requirements: successfully")
     except:
-        raise("Failed to install requirements")
-import webseiteManager
-webseiteManager.start()
+        raise Exception("Failed to install requirements")
+try:
+    import webseiteManager
+    webseiteManager.start()
+
+except:
+    raise Exception("Failed to import webseiteManager")
+
 
 
 

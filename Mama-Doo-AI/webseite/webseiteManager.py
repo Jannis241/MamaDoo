@@ -2,7 +2,7 @@
 try:
     from flask import Flask, render_template, request, redirect, url_for, flash
 except:
-    raise ImportError("Required module 'Flask' is missing..")
+    raise Exception("Required module 'Flask' is missing..")
 
 
 import sys
