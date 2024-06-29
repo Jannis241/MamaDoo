@@ -1,4 +1,8 @@
-print("gmail service not working rn.......")
+
+
+print()
+print("gmail service deactivated: True")
+print()
 
 
 def sendMail(content, subject):

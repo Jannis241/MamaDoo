@@ -2,7 +2,7 @@
 try:
     from flask import Flask, render_template, request, redirect, url_for, flash
 except:
-    raise("Required module 'Flask' is missing..")
+    raise ImportError("Required module 'Flask' is missing..")
 
 
 import sys
@@ -26,21 +26,26 @@ sortedByRating =  "false"
 sortedBySatt = "false"
 sortedByGesund = "false"
 
+
+
 @app.route('/')
 def home():
-    os.system("cls")
-    print("started all services..")
+    print()
     print("rendering home template")
+    print()
     return render_template('index.html')
 
 @app.route('/add-food-not-have', methods=['GET', 'POST'])
 def add_food_not_have():
-    
+        
+    print()
+    print("rendering food not have page")
+    print()
     if request.method == 'POST':
         food = request.form['food']
         if food and food not in foods_not_have:
             if mainAI.MDA.checkIfZutatExists(food):
-                print(f"added {food} to: loswerde Liste")
+                print(f"added '{food}' zu loswerde Liste")
                 
                 foods_not_have.append(food)
             else:
@@ -50,11 +55,15 @@ def add_food_not_have():
 
 @app.route('/add-food-have', methods=['GET', 'POST'])
 def add_food_have():
+        
+    print()
+    print("rendering food have page")
+    print()
     if request.method == 'POST':
         food = request.form['food']
         if food and food not in foods_have:
             if mainAI.MDA.checkIfZutatExists(food):
-                print(f"added {food} to: nicht Vorhanden Liste")
+                print(f"added '{food}' zu nicht Vorhandene Liste")
                 foods_have.append(food)
             else:
                 print(f"invalid input: {food}")
@@ -80,7 +89,6 @@ def remove_food_have():
 @app.route('/submit', methods=['POST'])
 def submit():
     
-
     global results
     
     # Erfasse die Checkbox-Werte
@@ -112,6 +120,10 @@ def submit():
 
 @app.route('/confirmation')
 def confirmation():
+        
+    print()
+    print("rendering submit page")
+    print()
     return render_template('submit.html', results=results)
 
 @app.route('/reset-and-home')
@@ -137,6 +149,10 @@ def reset_and_home():
 
 @app.route('/shopping-list', methods=['GET', 'POST'])
 def show_shopping_list():
+    
+    print()
+    print("rendering Einkaufsliste page")
+    print()
     if request.method == 'POST':
         food = request.form['food']
         if food and food not in shopping_list:
@@ -165,6 +181,8 @@ def start():
     print("Starting website..")
     print()
     print()
+    
+   
     app.run(debug=False, host='0.0.0.0')
 
 
