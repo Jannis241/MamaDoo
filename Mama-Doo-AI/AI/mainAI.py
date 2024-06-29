@@ -5,7 +5,6 @@ import Zutaten
 import gmail
 
 
-
 class MamaDooAi():
     def __init__(self):
         print("initializing MamaDooAi..")
@@ -16,7 +15,7 @@ class MamaDooAi():
 
     def evaluate(self, sortedByDifficulty=False, MamaBenötigtFilter=False, sortedByRating=False, sortedByGesund=False, sortedBySatt=False):
         validGerichteCount = 0
-        
+
         loswerdeBonus = 100000
         sattMultiplier = 1
         gesundMultiplier = 1.5
@@ -121,6 +120,3 @@ class MamaDooAi():
 
 
 MDA = MamaDooAi()
-
-
-
