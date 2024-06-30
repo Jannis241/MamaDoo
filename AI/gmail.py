@@ -1,5 +1,3 @@
-
-
 print()
 print("gmail service active: False")
 print()
@@ -28,8 +26,6 @@ def sendMail(content, subject):
         smtpserver.starttls()
         smtpserver.ehlo()
         smtpserver.login("@gmail.com", "")
-        smtpserver.sendmail(
-            sender_email, receiver_email, message.as_string()
-        )
+        smtpserver.sendmail(sender_email, receiver_email, message.as_string())
 
-    print('Email got sent')
+    print("Email got sent")

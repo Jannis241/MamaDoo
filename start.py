@@ -10,8 +10,10 @@ print()
 print()
 print()
 
+
 try:
     import flask
+
     print()
     print("Flask is already installed")
 except:
@@ -27,6 +29,7 @@ except:
         raise Exception("Failed to install requirements")
 try:
     from webseite import webseiteManager
+
     webseiteManager.start()
 
 except:

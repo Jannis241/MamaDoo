@@ -1,8 +1,7 @@
-
 from AI import Essen, Zutaten, gmail
 
 
-class MamaDooAi():
+class MamaDooAi:
     def __init__(self):
         print("initializing MamaDooAi..")
         self.alleGerichte = Essen.alleGerichte
@@ -94,11 +93,9 @@ class MamaDooAi():
 
     def setUserInfo(self, loswerdeList, nichtVorhandenList):
         for zutatString in loswerdeList:
-            self.loswerdeZutaten.append(
-                getattr(self.zutatenManager, zutatString.strip().lower().replace(" ", "")))
+            self.loswerdeZutaten.append(getattr(self.zutatenManager, zutatString.strip().lower().replace(" ", "")))
         for zutatString in nichtVorhandenList:
-            self.nichtVorhandeneZutate.append(
-                getattr(self.zutatenManager, zutatString.strip().lower().replace(" ", "")))
+            self.nichtVorhandeneZutate.append(getattr(self.zutatenManager, zutatString.strip().lower().replace(" ", "")))
 
         for zutat in self.loswerdeZutaten:
             zutat.istVorhanden = 1
@@ -117,6 +114,3 @@ class MamaDooAi():
 
 
 MDA = MamaDooAi()
-
-
-

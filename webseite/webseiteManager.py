@@ -1,4 +1,3 @@
-
 try:
     from flask import Flask, flash, redirect, render_template, request, url_for
 except:
@@ -6,7 +5,7 @@ except:
 
 from AI import mainAI
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder="static")
 app.secret_key = "secret"
 foods_have = []
 foods_not_have = []
@@ -17,88 +16,92 @@ global mamaBenötigt, sortedByGesund, sortedByRating, sortedBySatt, sortiereNach
 
 mamaBenötigt = "false"
 sortiereNachSchwierigkeit = "false"
-sortedByRating =  "false"
+sortedByRating = "false"
 sortedBySatt = "false"
 sortedByGesund = "false"
 
 
-
-@app.route('/')
+@app.route("/")
 def home():
     print()
     print("rendering home template")
     print()
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/add-food-not-have', methods=['GET', 'POST'])
+
+@app.route("/add-food-not-have", methods=["GET", "POST"])
 def add_food_not_have():
-        
+
     print()
     print("rendering food not have page")
     print()
-    if request.method == 'POST':
-        food = request.form['food']
+    if request.method == "POST":
+        food = request.form["food"]
         if food and food not in foods_not_have:
             if mainAI.MDA.checkIfZutatExists(food):
                 print(f"added '{food}' zu loswerde Liste")
-                
+
                 foods_not_have.append(food)
             else:
                 print(f"invalid input: {food}")
-                flash(f"Das Lebensmittel '{food}' existiert nicht.", 'danger')
-    return render_template('add_food_not_have.html', foods_not_have=foods_not_have)
+                flash(f"Das Lebensmittel '{food}' existiert nicht.", "danger")
+    return render_template("add_food_not_have.html", foods_not_have=foods_not_have)
 
-@app.route('/add-food-have', methods=['GET', 'POST'])
+
+@app.route("/add-food-have", methods=["GET", "POST"])
 def add_food_have():
-        
+
     print()
     print("rendering food have page")
     print()
-    if request.method == 'POST':
-        food = request.form['food']
+    if request.method == "POST":
+        food = request.form["food"]
         if food and food not in foods_have:
             if mainAI.MDA.checkIfZutatExists(food):
                 print(f"added '{food}' zu nicht Vorhandene Liste")
                 foods_have.append(food)
             else:
                 print(f"invalid input: {food}")
-                flash(f"Das Lebensmittel '{food}' existiert nicht.", 'danger')
-    return render_template('add_food_have.html', foods_have=foods_have)
+                flash(f"Das Lebensmittel '{food}' existiert nicht.", "danger")
+    return render_template("add_food_have.html", foods_have=foods_have)
 
-@app.route('/remove-food-not-have', methods=['POST'])
+
+@app.route("/remove-food-not-have", methods=["POST"])
 def remove_food_not_have():
-    food_to_remove = request.form['food']
+    food_to_remove = request.form["food"]
     if food_to_remove in foods_not_have:
         foods_not_have.remove(food_to_remove)
         print(f"Removed food: {food_to_remove}")
-    return redirect(url_for('add_food_not_have'))
+    return redirect(url_for("add_food_not_have"))
 
-@app.route('/remove-food-have', methods=['POST'])
+
+@app.route("/remove-food-have", methods=["POST"])
 def remove_food_have():
-    food_to_remove = request.form['food']
+    food_to_remove = request.form["food"]
     if food_to_remove in foods_have:
         foods_have.remove(food_to_remove)
         print(f"Removed food: {food_to_remove}")
-    return redirect(url_for('add_food_have'))
+    return redirect(url_for("add_food_have"))
 
-@app.route('/submit', methods=['POST'])
+
+@app.route("/submit", methods=["POST"])
 def submit():
-    
-    global results
-    
-    # Erfasse die Checkbox-Werte
-    mamaBenötigt = request.form.get('mamaBenötigt') == 'true'
-    sortiereNachSchwierigkeit = request.form.get('sortiereNachSchwierigkeit') == 'true'
 
-    sortedByRating = request.form.get('sortiereNachRating') == 'true'
-    sortedBySatt = request.form.get('sortiereNachSatt') == 'true'
-    sortedByGesund = request.form.get('sortiereNachGesund') == 'true'
+    global results
+
+    # Erfasse die Checkbox-Werte
+    mamaBenötigt = request.form.get("mamaBenötigt") == "true"
+    sortiereNachSchwierigkeit = request.form.get("sortiereNachSchwierigkeit") == "true"
+
+    sortedByRating = request.form.get("sortiereNachRating") == "true"
+    sortedBySatt = request.form.get("sortiereNachSatt") == "true"
+    sortedByGesund = request.form.get("sortiereNachGesund") == "true"
 
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
-    
+
     # Hier werden die Parameter an die evaluate-Funktion übergeben
-    results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt,sortedByRating,sortedByGesund, sortedBySatt)
-    
+    results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt, sortedByRating, sortedByGesund, sortedBySatt)
+
     # Clear the lists after submission
     print("-------")
     print()
@@ -111,17 +114,19 @@ def submit():
     print("Nach Satt sortiert: ", sortedBySatt)
     print("Nach Bewertung sortiert: ", sortedByRating)
     print("-------")
-    return redirect(url_for('confirmation'))
+    return redirect(url_for("confirmation"))
 
-@app.route('/confirmation')
+
+@app.route("/confirmation")
 def confirmation():
-        
+
     print()
     print("rendering submit page")
     print()
-    return render_template('submit.html', results=results)
+    return render_template("submit.html", results=results)
 
-@app.route('/reset-and-home')
+
+@app.route("/reset-and-home")
 def reset_and_home():
     print("")
     print("")
@@ -135,41 +140,44 @@ def reset_and_home():
     # reset all filters
     mamaBenötigt = "false"
     sortiereNachSchwierigkeit = "false"
-    sortedByRating =  "false"
+    sortedByRating = "false"
     sortedBySatt = "false"
     sortedByGesund = "false"
 
-    return redirect(url_for('home'))
+    return redirect(url_for("home"))
 
 
-@app.route('/shopping-list', methods=['GET', 'POST'])
+@app.route("/shopping-list", methods=["GET", "POST"])
 def show_shopping_list():
-     
+
     print()
     print()
     print("rendering Einkaufsliste page")
     print()
-    if request.method == 'POST':
-        food = request.form['food']
+    if request.method == "POST":
+        food = request.form["food"]
         if food and food not in shopping_list:
-            
-            shopping_list.append(food)
-    return render_template('Einkaufsliste.html', shopping_list=shopping_list)
 
-@app.route('/add-food-shopping-list', methods=['POST'])
+            shopping_list.append(food)
+    return render_template("Einkaufsliste.html", shopping_list=shopping_list)
+
+
+@app.route("/add-food-shopping-list", methods=["POST"])
 def add_food_shopping_list():
-    food = request.form['food']
+    food = request.form["food"]
     if food and food not in shopping_list:
         print(f"Added food: {food} to shopping list")
         shopping_list.append(food)
-    return redirect(url_for('show_shopping_list'))
-@app.route('/remove-food-shopping-list', methods=['POST'])
+    return redirect(url_for("show_shopping_list"))
+
+
+@app.route("/remove-food-shopping-list", methods=["POST"])
 def remove_food_shopping_list():
-    food_to_remove = request.form['food']
+    food_to_remove = request.form["food"]
     if food_to_remove in shopping_list:
         shopping_list.remove(food_to_remove)
         print(f"Remove food: {food_to_remove} to shopping list")
-    return redirect(url_for('show_shopping_list'))
+    return redirect(url_for("show_shopping_list"))
 
 
 def start():
@@ -178,8 +186,8 @@ def start():
     print()
     print()
 
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host="0.0.0.0")
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host="0.0.0.0")

@@ -4,7 +4,7 @@ from AI import Zutaten
 
 
 class Essen:
-    def __init__(self, name, rating, satt, difficulty, gesund, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None, ):
+    def __init__(self, name, rating, satt, difficulty, gesund, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None):
         self.name = name
         self.rating = rating
         self.satt = satt
@@ -26,11 +26,11 @@ def read_configurations(filename):
     zutatenManager = Zutaten.Manager()
 
     try:
-        with open(filename, 'r', encoding='utf-8') as file:
+        with open(filename, "r", encoding="utf-8") as file:
             for line in file:
                 line = line.strip()
                 if line and line[0] != "#":
-                    parts = line.split(',')
+                    parts = line.split(",")
 
                     name = parts[0].strip()
                     rating = float(parts[1].strip())
@@ -59,8 +59,7 @@ def read_configurations(filename):
                             print("Zutat", zutat_name, "does not exist.")
                             exit()
 
-                    essen = Essen(name, rating, satt, difficulty, gesund,
-                                  acutalZutatenListe, wann, tm, mb, extraInfo)
+                    essen = Essen(name, rating, satt, difficulty, gesund, acutalZutatenListe, wann, tm, mb, extraInfo)
                     alleGerichte.append(essen)
 
     except FileNotFoundError:
@@ -70,7 +69,7 @@ def read_configurations(filename):
 
 
 script_dir = os.path.dirname(__file__)
-filename = os.path.join(script_dir, 'config.txt')
+filename = os.path.join(script_dir, "config.txt")
 read_configurations(filename)
 print()
 print("Reading config.txt file..")
