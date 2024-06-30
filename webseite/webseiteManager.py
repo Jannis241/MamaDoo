@@ -6,7 +6,7 @@ except:
 from AI import mainAI
 
 app = Flask(__name__, static_folder="static")
-app.secret_key = "secret"
+app.secret_key = "dsfjdsgjdfgsderfgeshe23425234563465345"
 foods_have = []
 foods_not_have = []
 shopping_list = []
@@ -26,6 +26,7 @@ def home():
     print()
     print("rendering home template")
     print()
+
     return render_template("index.html")
 
 
@@ -185,9 +186,4 @@ def start():
     print("Starting website..")
     print()
     print()
-
     app.run(debug=False, host="0.0.0.0")
-
-
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")

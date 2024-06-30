@@ -27,10 +27,6 @@ except:
         print("Installed requirements: successfully")
     except:
         raise Exception("Failed to install requirements")
-try:
-    from webseite import webseiteManager
+from webseite import webseiteManager
 
-    webseiteManager.start()
-
-except:
-    raise Exception("Failed to import webseiteManager")
+webseiteManager.start()
