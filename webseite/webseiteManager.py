@@ -3,7 +3,7 @@ try:
 except:
     raise Exception("Required module 'Flask' is missing..")
 
-from AI import mainAI
+from AI import Essen, mainAI
 
 app = Flask(__name__, static_folder="static")
 app.secret_key = "dsfjdsgjdfgsderfgeshe23425234563465345"
@@ -179,6 +179,12 @@ def remove_food_shopping_list():
         shopping_list.remove(food_to_remove)
         print(f"Remove food: {food_to_remove} to shopping list")
     return redirect(url_for("show_shopping_list"))
+
+
+@app.route("/gericht/<string:name>")
+def gericht_detail(name):
+    gericht = Essen.get_gericht_by_name(name)
+    return render_template("gericht_detail.html", gericht=gericht)
 
 
 def start():

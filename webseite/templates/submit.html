@@ -12,6 +12,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            cursor: pointer;
         }
 
         .card-header {
@@ -121,7 +127,7 @@
         <div class="row">
             {% for gericht in results %}
             <div class="col-md-4 mb-4">
-                <div class="card">
+                <div class="card" data-url="/gericht/{{ gericht.name }}">
                     <div class="card-header">
                         {{ gericht.name }}
                     </div>
@@ -159,6 +165,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('form');
             const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+            const cards = document.querySelectorAll('.card');
 
             // Restore checkbox states from localStorage
             checkboxes.forEach(checkbox => {
@@ -186,6 +193,16 @@
                 }).catch(error => {
                     console.error('Error:', error);
                     location.reload(); // Fallback to reload even on error
+                });
+            });
+
+            // Add click event to cards
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const url = card.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                    }
                 });
             });
         });

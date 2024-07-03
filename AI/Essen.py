@@ -3,6 +3,13 @@ import os
 from AI import Zutaten
 
 
+def get_gericht_by_name(name):
+    for gericht in alleGerichte:
+        if gericht.name == name:
+            return gericht
+    raise Exception(f"Gericht '{name}' nicht gefunden")
+
+
 class Essen:
     def __init__(self, name, rating, satt, difficulty, gesund, zutaten, wann, tm, MamaBenötigt, extraInfo, addOns=None):
         self.name = name
