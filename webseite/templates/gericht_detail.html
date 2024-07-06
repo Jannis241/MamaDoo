@@ -4,16 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .back-button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 20px;
+            padding: 7px 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px; /* Schriftgröße anpassen */
+        }
+        .back-button:hover {
+            background-color: #0056b3; /* Farbe ändern bei Hover */
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .navbar-brand {
+            position: absolute; /* Position absolut setzen */
+            left: 50%; /* Horizontal zentrieren */
+            transform: translateX(-50%); /* Zurückverschieben um 50% der eigenen Breite */
+        }
+        .centered-content {
+            text-align: left; /* Inhalte linksbündig ausrichten */
+        }
+        .centered-button {
+            text-align: center; /* Button zentrieren */
+        }
+    </style>
     <title>{{ gericht.name }}</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a href="/confirmation" class="back-button"><span class="arrow">&larr;</span> Zurück</a>
         <a class="navbar-brand mx-auto" href="#">Mama Doo AI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
@@ -25,34 +53,28 @@
     </nav>
 
     <div class="container mt-4">
-        <h1>{{ gericht.name }}</h1>
-        <p><strong>Bewertung:</strong> {{ gericht.rating }}</p>
-        <p><strong>Sättigung:</strong> {{ gericht.satt }}</p>
-        <p><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
-        <p><strong>Gesund:</strong> {{ gericht.gesund }}</p>
-        <p><strong>Wann:</strong> {{ gericht.wann }}</p>
-        <p><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
-        <p><strong>Mama Benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
-        <p><strong>Extra Infos:</strong> {{ gericht.extraInfo }}</p>
-        <p><strong>Zutaten:</strong></p>
-        <ul class="list-group list-group-flush">
-            {% for zutat in gericht.zutaten %}
-            <li class="list-group-item">{{ zutat.name }}</li>
-            {% endfor %}
-        </ul>
+        <div class="centered-content">
+            <h1>{{ gericht.name }}</h1>
+            <p><strong>Bewertung:</strong> {{ gericht.rating }}</p>
+            <p><strong>Sättigung:</strong> {{ gericht.satt }}</p>
+            <p><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
+            <p><strong>Gesund:</strong> {{ gericht.gesund }}</p>
+            <p><strong>Wann:</strong> {{ gericht.wann }}</p>
+            <p><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
+            <p><strong>Mama Benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
+            <p><strong>Extra Infos:</strong> {{ gericht.extraInfo }}</p>
+            <p><strong>Zutaten:</strong></p>
+            <ul class="list-group list-group-flush">
+                {% for zutat in gericht.zutaten %}
+                <li class="list-group-item">{{ zutat.name }}</li>
+                {% endfor %}
+            </ul>
 
-        <form action="/add-date" method="post" class="mt-4">
-            <div class="form-group">
-                <label for="date">Datum auswählen:</label>
-                <input type="date" id="date" name="date" class="form-control" required>
-                <input type="hidden" name="gericht_name" value="{{ gericht.name }}">
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Eintragen</button>
-        </form>
-
-        <div class="text-center mt-4">
-            <a href="/submit" class="btn btn-secondary">Zurück</a>
+            <form action="/" method="post" class="mt-4">
+                <div class="centered-button">
+                    <button type="submit" class="btn btn-primary">Für Heute eintragen</button>
+                </div>
+            </form>
         </div>
     </div>
 

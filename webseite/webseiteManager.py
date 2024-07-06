@@ -48,8 +48,11 @@ def reset_foods_have():
     return redirect(url_for("add_food_have"))
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
+    if request.method == "POST":
+        # hier wäre die data vom kalender
+        pass
     global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedByGesund, sortedBySatt
     mamaBenötigt = "false"
     sortiereNachSchwierigkeit = "false"
