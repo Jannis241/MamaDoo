@@ -3,6 +3,8 @@ try:
 except:
     raise Exception("Required module 'Flask' is missing..")
 
+import os
+
 from AI import Essen, mainAI
 
 app = Flask(__name__, static_folder="static")
@@ -10,6 +12,12 @@ app.secret_key = "dsfjdsgjdfgsderfgeshe23425234563465345"
 foods_have = []
 foods_not_have = []
 shopping_list = []
+file = open("webseite/einkaufsliste.txt")
+lines = file.readlines()
+for line in lines:
+    shopping_list.append(line.strip())
+file.close()
+
 results = []
 
 global mamaBenötigt, sortedByGesund, sortedByRating, sortedBySatt, sortiereNachSchwierigkeit
@@ -168,6 +176,12 @@ def add_food_shopping_list():
     food = request.form["food"]
     if food and food not in shopping_list:
         print(f"Added food: {food} to shopping list")
+
+        file = open("webseite\einkaufsliste.txt", "a")
+        file.write(food)
+        file.write("\n")
+        file.close()
+
         shopping_list.append(food)
     return redirect(url_for("show_shopping_list"))
 
@@ -178,6 +192,14 @@ def remove_food_shopping_list():
     if food_to_remove in shopping_list:
         shopping_list.remove(food_to_remove)
         print(f"Remove food: {food_to_remove} to shopping list")
+        os.remove("webseite/einkaufsliste.txt")
+        file = open("webseite\einkaufsliste.txt", "a")
+        for food in shopping_list:
+            file.write(food)
+            file.write("\n")
+
+        file.close()
+
     return redirect(url_for("show_shopping_list"))
 
 
