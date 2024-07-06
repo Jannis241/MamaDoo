@@ -12,6 +12,8 @@ foods_have = []
 foods_not_have = []
 shopping_list = []
 
+selected_gericht = None
+
 file = open("webseite/einkaufsliste.txt")
 lines = file.readlines()
 for line in lines:
@@ -50,9 +52,11 @@ def reset_foods_have():
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    global foods_have, foods_not_have, selected_gericht
+
     if request.method == "POST":
-        # hier wäre die data vom kalender
-        pass
+        selected_gericht = request.form.get("selected_gericht", None)
+        return redirect(url_for("home"))
     global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedByGesund, sortedBySatt
     mamaBenötigt = "false"
     sortiereNachSchwierigkeit = "false"
@@ -61,7 +65,7 @@ def home():
     sortedByGesund = "false"
     foods_not_have = []
     foods_have = []
-    return render_template("index.html")
+    return render_template("index.html", selected_gericht=selected_gericht)
 
 
 @app.route("/add-food-not-have", methods=["GET", "POST"])

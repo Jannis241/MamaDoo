@@ -1,47 +1,72 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
-    <title>Mama Doo AI</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand mx-auto" href="#">Mama Doo AI</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+  <title>Mama Doo AI</title>
+  <style>
+    /* Zusätzliche benutzerdefinierte Styles können hier eingefügt werden */
+    .selected-gericht {
+      background-color: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .selected-gericht h3 {
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand mx-auto" href="#">Mama Doo AI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
         </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzuf&uuml;gen, die ich <span style = "color: red"><b><u>nicht habe</u></b></span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich <span style = "color: green"><b><u>benutzen will</u></b></span> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/shopping-list">Einkaufsliste</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzuf&uuml;gen, die ich <span style="color: red"><b><u>nicht habe</u></b></span></a>
         </li>
-        
-        </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich <span style="color: green"><b><u>benutzen will</u></b></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shopping-list">Einkaufsliste</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-      </div>
-    </nav>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h1>Willkommen bei Mama Doo AI!</h1>
-          <p class="lead">Das hier ist eine Webseite um Mama zu helfen sich dabei zu entscheiden was sie kochen soll.</p>
-        </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Willkommen bei Mama Doo AI!</h1>
+        <p class="lead">Das hier ist eine Webseite um Mama zu helfen sich dabei zu entscheiden was sie kochen soll.</p>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+  </div>
+
+  {% if selected_gericht %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 selected-gericht">
+        <h4 class="text-center mb-4"><u>Ausgewähltes Gericht für heute:</u></h4>
+        <h3 class="text-center"><b>{{ selected_gericht }}</b></h3>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
