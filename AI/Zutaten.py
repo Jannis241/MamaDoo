@@ -1,4 +1,4 @@
-class Manager():
+class Manager:
     def __init__(self) -> None:
         self.eier = Zutat("eier")
         self.mehl = Zutat("mehl")
@@ -223,6 +223,7 @@ class Manager():
         self.rotwein = Zutat("rotwein")
         self.weißwein = Zutat("weißwein")
         self.hefe = Zutat("hefe")
+
         self.backpulver = Zutat("backpulver")
         self.rosinen = Zutat("rosinen")
         self.walnüsse = Zutat("walnüsse")
@@ -809,7 +810,7 @@ class Manager():
         self.kakaopulver = Zutat("kakaopulver")
 
 
-class Zutat():
+class Zutat:
     def __init__(self, name) -> None:
         self.name = name
         # 1 will loswerden, 0 habe ich (default), -1 habe ich nicht
