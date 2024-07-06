@@ -113,7 +113,8 @@ def submit():
     sortedByRating = request.form.get("sortiereNachRating") == "true"
     sortedBySatt = request.form.get("sortiereNachSatt") == "true"
     sortedByGesund = request.form.get("sortiereNachGesund") == "true"
-
+    mainAI.MDA.reinit()
+    print("setting user info: ", foods_have, foods_not_have)
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
 
     # Hier werden die Parameter an die evaluate-Funktion übergeben

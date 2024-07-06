@@ -21,7 +21,8 @@ class MamaDooAi:
         AufwandMultiplier = -1.5
 
         mamaTest = True
-
+        print("loswerde zutaten: ", self.loswerdeZutaten)
+        print("nicht vorhandene Zutaten: ", self.nichtVorhandeneZutate)
         if sortedByDifficulty:
             AufwandMultiplier = -100
         if sortedByRating:
@@ -33,7 +34,6 @@ class MamaDooAi:
 
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
-            wirdZutatLos = False
             score = 0
             if self.canEssenBeMade(gericht):  # alle zutaten sind da
 
@@ -54,6 +54,8 @@ class MamaDooAi:
                         for loswerdeZutat in self.loswerdeZutaten:
                             if zutat.name == loswerdeZutat.name:
                                 score += loswerdeBonus
+
+                                print("found gericht mit loswerde zutat: ", gericht.name)
                                 gerichteMitLoswerdeZutaten += 1
 
                     possibleGerichte[gericht] = score
@@ -63,13 +65,7 @@ class MamaDooAi:
             raise KeyError("Something went wrong the evaluation dict")
 
         sorted_gerichte = sorted(possibleGerichte.keys(), key=lambda x: possibleGerichte[x], reverse=True)
-        for gericht in sorted_gerichte:
-            print(f"Name: {gericht.name} -> {possibleGerichte[gericht]}")
-        print()
-
-        print("AI found", len(sorted_gerichte), "possibilities..")
-        print(len(self.alleGerichte) - len(sorted_gerichte), "got sorted out..")
-
+        print("gmlz: ", gerichteMitLoswerdeZutaten)
         return sorted_gerichte, gerichteMitLoswerdeZutaten
 
     def reinit(self):

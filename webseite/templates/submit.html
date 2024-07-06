@@ -159,7 +159,7 @@
         <div class="row">
             {% for gericht in results %}
                 <div class="col-md-4 mb-4">
-                    <div class="card {% if loop.index <= numOfLoswerdeGerichte %} card-loswerde {% else %} card-not-loswerde {% endif %}" data-url="/gericht/{{ gericht.name }}">
+                    <div class="card {% if numOfLoswerdeGerichte == 0 %}card-loswerde{% elif loop.index <= numOfLoswerdeGerichte %}card-loswerde{% else %}card-not-loswerde{% endif %}" data-url="/gericht/{{ gericht.name }}">
                         <div class="card-header">
                             {{ gericht.name }}
                         </div>
