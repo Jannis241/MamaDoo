@@ -51,7 +51,6 @@
             background-color: #0056b3;
         }
 
-
         .btn-back {
             background-color: #007bff;
             border: none;
@@ -76,7 +75,15 @@
         .list-group-item:nth-child(even) {
             background-color: #f9f9f9;
         }
-        
+
+        /* Neu hinzugefügt */
+        .card-loswerde {
+            background-color: #ffffff; /* Weiß für Karten mit loswerde Zutaten */
+        }
+
+        .card-not-loswerde {
+            background-color: #dedede; /* Grau für Karten ohne loswerde Zutaten */
+        }
     </style>
     <title>Ergebnisse</title>
 </head>
@@ -95,10 +102,10 @@
                     <a class="nav-link" href="/reset-and-home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich <span style = "color: red"><b><u>nicht habe</u></b></span> </a>
+                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich <span style="color: red"><b><u>nicht habe</u></b></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich <span style = "color: green"><b><u>benutzen will</u></b></span> </a>
+                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich <span style="color: green"><b><u>benutzen will</u></b></span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping-list">Einkaufsliste</a>
@@ -107,7 +114,6 @@
         </div>
     </nav>
 
-    
     <div class="container">
         <h1 class="mb-4 text-center">Ergebnisse</h1>
         
@@ -151,29 +157,29 @@
         <!-- Ergebnis Karten -->
         <div class="row">
             {% for gericht in results %}
-            <div class="col-md-4 mb-4">
-                <div class="card" data-url="/gericht/{{ gericht.name }}">
-                    <div class="card-header">
-                        {{ gericht.name }}
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Bewertung:</strong> {{ gericht.rating }}</p>
-                        <p><strong>Sättigung:</strong> {{ gericht.satt }}</p>
-                        <p><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
-                        <p><strong>Gesund:</strong> {{ gericht.gesund }}</p>
-                        <p><strong>Wann:</strong> {{ gericht.wann }}</p>
-                        <p><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
-                        <p><strong>Mama Benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
-                        <p><strong>Extra Infos:</strong> {{ gericht.extraInfo }}</p>
-                        <p><strong>Zutaten:</strong></p>
-                        <ul class="list-group list-group-flush">
-                            {% for zutat in gericht.zutaten %}
-                            <li class="list-group-item">{{ zutat.name }}</li>
-                            {% endfor %}
-                        </ul>
+                <div class="col-md-4 mb-4">
+                    <div class="card {% if loop.index <= numOfLoswerdeGerichte %} card-loswerde {% else %} card-not-loswerde {% endif %}" data-url="/gericht/{{ gericht.name }}">
+                        <div class="card-header">
+                            {{ gericht.name }}
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Bewertung:</strong> {{ gericht.rating }}</p>
+                            <p><strong>Sättigung:</strong> {{ gericht.satt }}</p>
+                            <p><strong>Schwierigkeit:</strong> {{ gericht.difficulty }}</p>
+                            <p><strong>Gesund:</strong> {{ gericht.gesund }}</p>
+                            <p><strong>Wann:</strong> {{ gericht.wann }}</p>
+                            <p><strong>Thermomix:</strong> {{ gericht.thermomix }}</p>
+                            <p><strong>Mama Benötigt:</strong> {{ gericht.mamaBenötigt }}</p>
+                            <p><strong>Extra Infos:</strong> {{ gericht.extraInfo }}</p>
+                            <p><strong>Zutaten:</strong></p>
+                            <ul class="list-group list-group-flush">
+                                {% for zutat in gericht.zutaten %}
+                                    <li class="list-group-item">{{ zutat.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
         
@@ -230,6 +236,17 @@
                     }
                 });
             });
+
+            // Check if user has visited home page
+            const visitedHome = localStorage.getItem('visitedHome');
+
+            // If user has visited home page, clear the local storage
+            if (visitedHome) {
+                localStorage.clear();
+            }
+
+            // Set flag in local storage indicating user has visited home page
+            localStorage.setItem('visitedHome', 'true');
         });
     </script>
 </body>

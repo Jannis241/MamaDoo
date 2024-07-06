@@ -12,6 +12,8 @@ class MamaDooAi:
     def evaluate(self, sortedByDifficulty=False, MamaBenötigtFilter=False, sortedByRating=False, sortedByGesund=False, sortedBySatt=False):
         validGerichteCount = 0
 
+        gerichteMitLoswerdeZutaten = 0
+
         loswerdeBonus = 100000
         sattMultiplier = 1
         gesundMultiplier = 1.5
@@ -31,6 +33,7 @@ class MamaDooAi:
 
         possibleGerichte = {}  # gericht : score
         for gericht in self.alleGerichte:
+            wirdZutatLos = False
             score = 0
             if self.canEssenBeMade(gericht):  # alle zutaten sind da
 
@@ -51,6 +54,7 @@ class MamaDooAi:
                         for loswerdeZutat in self.loswerdeZutaten:
                             if zutat.name == loswerdeZutat.name:
                                 score += loswerdeBonus
+                                gerichteMitLoswerdeZutaten += 1
 
                     possibleGerichte[gericht] = score
                     validGerichteCount += 1
@@ -65,9 +69,8 @@ class MamaDooAi:
 
         print("AI found", len(sorted_gerichte), "possibilities..")
         print(len(self.alleGerichte) - len(sorted_gerichte), "got sorted out..")
-        print()
 
-        return sorted_gerichte
+        return sorted_gerichte, gerichteMitLoswerdeZutaten
 
     def reinit(self):
         # alle zutaten werden resetet falls der user nochmal neue angaben machen möchte

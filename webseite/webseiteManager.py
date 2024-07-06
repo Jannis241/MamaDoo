@@ -105,7 +105,7 @@ def remove_food_have():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    global results
+    global results, numOfLoswerdeGerichte
 
     # Erfasse die Checkbox-Werte
     mamaBenötigt = request.form.get("mamaBenötigt") == "true"
@@ -117,18 +117,17 @@ def submit():
     mainAI.MDA.setUserInfo(foods_have, foods_not_have)  # sending the info to the ai
 
     # Hier werden die Parameter an die evaluate-Funktion übergeben
-    results = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt, sortedByRating, sortedByGesund, sortedBySatt)
+    results, numOfLoswerdeGerichte = mainAI.MDA.evaluate(sortiereNachSchwierigkeit, mamaBenötigt, sortedByRating, sortedByGesund, sortedBySatt)
 
     # Speichere die Back-URL, um zur vorherigen Seite zurückzukehren
     back_url = request.referrer
-
     return redirect(url_for("confirmation", back_url=back_url))
 
 
 @app.route("/confirmation")
 def confirmation():
     back_url = request.args.get("back_url", url_for("home"))
-    return render_template("submit.html", results=results, back_url=back_url)
+    return render_template("submit.html", results=results, numOfLoswerdeGerichte=numOfLoswerdeGerichte, back_url=back_url)
 
 
 @app.route("/reset-and-home")
@@ -138,14 +137,15 @@ def reset_and_home():
     foods_not_have = []
     mainAI.MDA.reinit()
 
-    # reset all filters
+    # Reset all filters
     mamaBenötigt = "false"
     sortiereNachSchwierigkeit = "false"
     sortedByRating = "false"
     sortedBySatt = "false"
     sortedByGesund = "false"
 
-    return redirect(url_for("home"))
+    # Clear the 'visitedHome' flag in localStorage
+    return render_template("index.html")
 
 
 @app.route("/shopping-list", methods=["GET", "POST"])
