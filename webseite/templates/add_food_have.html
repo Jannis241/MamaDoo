@@ -6,17 +6,49 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     <title>Lebensmittel hinzufügen, die ich benutzen will</title>
-
+    <style>
+        .reset-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .reset-button-container form {
+            margin: 0;
+        }
+        @media (min-width: 768px) {
+            .reset-button-container {
+                justify-content: flex-start;
+            }
+        }
+        .remove-btn {
+            background-color: #d3d3d3;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            width: 32px;
+            height: 32px;
+        }
+        .remove-btn .cross {
+            font-size: 20px;
+            line-height: 1;
+        }
+        .remove-btn:hover {
+            background-color: #a9a9a9;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
         <form id="submitForm" action="/submit" method="post" class="submit-button">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <form action="/reset-foods-have" method="post">
-            <button type="submit" class="btn btn-danger">Reset</button>
-        </form>
-        
+
         <a class="navbar-brand mx-auto" href="#">Mama Doo AI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,10 +59,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich nicht habe</a>
+                    <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich <span style = "color: red"><b><u>nicht habe</u></b></span> </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich benutzen will</a>
+                    <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich <span style = "color: green"><b><u>benutzen will</u></b></span> </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping-list">Einkaufsliste</a>
@@ -38,15 +70,17 @@
             </ul>
         </div>
     </nav>
+
     <div class="container mt-5">
-        <h1>Lebensmittel hinzufügen, die ich benutzen will</h1>
+        <h1>Lebensmittel hinzufügen, die ich <span style = "color: green">benutzen will</span> </h1>
         <form action="/add-food-have" method="post">
             <div class="form-group">
                 <label for="food">Lebensmittel</label>
                 <input type="text" class="form-control" id="food" name="food" required>
             </div>
-            <button type="submit" class="btn btn-primary">Hinzuf&uuml;gen</button>
+            <button type="submit" class="btn btn-primary">Hinzufügen</button>
         </form>
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -54,21 +88,30 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
         {% if foods_have %}
-        <h2 class="mt-5">Bereits hinzugef&uuml;gt:</h2>
-        <ul class="list-group">
-            {% for food in foods_have %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ food }}
-                    <form action="/remove-food-have" method="post" class="ml-2">
-                        <input type="hidden" name="food" value="{{ food }}">
-                        <button type="submit" class="btn btn-danger btn-sm ml-2">Remove</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
+            <h2 class="mt-5">Bereits hinzugefügt:</h2>
+            <ul class="list-group">
+                {% for food in foods_have %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ food }}
+                        <form action="/remove-food-have" method="post" class="ml-2">
+                            <input type="hidden" name="food" value="{{ food }}">
+                            <button type="submit" class="remove-btn">
+                                <span class="cross">&times;</span>
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="reset-button-container">
+                <form action="/reset-foods-have" method="post">
+                    <button type="submit" class="btn btn-danger">Clear</button>
+                </form>
+            </div>
         {% endif %}
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>

@@ -11,6 +11,7 @@ app.secret_key = "dsfjdsgjdfgsderfgeshe23425234563465345"
 foods_have = []
 foods_not_have = []
 shopping_list = []
+
 file = open("webseite/einkaufsliste.txt")
 lines = file.readlines()
 for line in lines:
@@ -18,6 +19,17 @@ for line in lines:
 file.close()
 
 results = []
+
+
+@app.route("/reset-foods-einkaufsliste", methods=["POST"])
+def reset_foods_einkaufsliste():
+    global shopping_list
+    shopping_list = []
+    file = open("webseite/einkaufsliste.txt", "w")
+    file.write("")
+    file.close()
+
+    return render_template("Einkaufsliste.html", shopping_list=shopping_list)
 
 
 @app.route("/reset-foods-not-have", methods=["POST"])
@@ -44,11 +56,14 @@ def home():
     sortedByRating = "false"
     sortedBySatt = "false"
     sortedByGesund = "false"
+    foods_not_have = []
+    foods_have = []
     return render_template("index.html")
 
 
 @app.route("/add-food-not-have", methods=["GET", "POST"])
 def add_food_not_have():
+    global foods_not_have
     if request.method == "POST":
         food = request.form["food"]
         if food and food not in foods_not_have:
@@ -61,6 +76,7 @@ def add_food_not_have():
 
 @app.route("/add-food-have", methods=["GET", "POST"])
 def add_food_have():
+    global foods_have
     if request.method == "POST":
         food = request.form["food"]
         if food and food not in foods_have:
