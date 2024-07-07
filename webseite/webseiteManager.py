@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, flash, redirect, render_template, request, url_for
+from flask import Flask, flash, jsonify, redirect, render_template, request, url_for
 
 from AI import Essen, mainAI
 
@@ -30,7 +30,6 @@ def reset_foods_einkaufsliste():
     file = open("webseite/einkaufsliste.txt", "w")
     file.write("")
     file.close()
-
     return render_template("Einkaufsliste.html", shopping_list=shopping_list)
 
 
@@ -38,7 +37,6 @@ def reset_foods_einkaufsliste():
 def reset_foods_not_have():
     global foods_not_have
     foods_not_have = []
-
     return redirect(url_for("add_food_not_have"))
 
 
@@ -46,18 +44,23 @@ def reset_foods_not_have():
 def reset_foods_have():
     global foods_have
     foods_have = []
-
     return redirect(url_for("add_food_have"))
+
+
+@app.route("/reset-selected-gericht", methods=["POST"])
+def reset_selected_gericht():
+    global selected_gericht
+    selected_gericht = None
+    return redirect(url_for("home"))
 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     global foods_have, foods_not_have, selected_gericht
-
     if request.method == "POST":
         selected_gericht = request.form.get("selected_gericht", None)
         return redirect(url_for("home"))
-    global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedByGesund, sortedBySatt
+    global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedBySatt, sortedByGesund
     mamaBenötigt = "false"
     sortiereNachSchwierigkeit = "false"
     sortedByRating = "false"

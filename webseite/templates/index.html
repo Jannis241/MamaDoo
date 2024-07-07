@@ -7,7 +7,6 @@
   <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
   <title>Mama Doo AI</title>
   <style>
-    /* Zusätzliche benutzerdefinierte Styles können hier eingefügt werden */
     .selected-gericht {
       background-color: #f8f9fa;
       border: 1px solid #ced4da;
@@ -15,9 +14,34 @@
       padding: 20px;
       margin-top: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
     }
     .selected-gericht h3 {
       color: #6c757d;
+    }
+    .remove-btn {
+      background-color: #d3d3d3;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .remove-btn .cross {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .remove-btn:hover {
+      background-color: #a9a9a9;
     }
   </style>
 </head>
@@ -33,7 +57,7 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzuf&uuml;gen, die ich <span style="color: red"><b><u>nicht habe</u></b></span></a>
+          <a class="nav-link" href="/add-food-not-have">Lebensmittel hinzufügen, die ich <span style="color: red"><b><u>nicht habe</u></b></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/add-food-have">Lebensmittel hinzufügen, die ich <span style="color: green"><b><u>benutzen will</u></b></span></a>
@@ -58,6 +82,11 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 selected-gericht">
+        <form id="reset-selected-gericht-form" action="/reset-selected-gericht" method="post">
+          <button type="submit" class="remove-btn">
+            <span class="cross">&times;</span>
+          </button>
+        </form>
         <h4 class="text-center mb-4"><u>Ausgewähltes Gericht für heute:</u></h4>
         <h3 class="text-center"><b>{{ selected_gericht }}</b></h3>
       </div>
@@ -68,5 +97,15 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const removeSymbol = document.querySelector('.remove-btn');
+      if (removeSymbol) {
+        removeSymbol.addEventListener('click', function () {
+          document.getElementById('reset-selected-gericht-form').submit();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
