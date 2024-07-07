@@ -73,10 +73,10 @@
 
     <div class="container mt-5">
         <h1>Lebensmittel hinzufügen, die ich <span style = "color: red">nicht habe</span></h1>
-        <form action="/add-food-not-have" method="post">
+        <form action="/add-food-not-have" method="post" autocomplete="off">
             <div class="form-group">
                 <label for="food">Lebensmittel</label>
-                <input type="text" class="form-control" id="food" name="food" required>
+                <input type="text" class="form-control" id="food" name="food" required autocomplete="off">
             </div>
             <button type="submit" class="btn btn-primary">Hinzufügen</button>
         </form>
