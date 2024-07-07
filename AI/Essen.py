@@ -78,5 +78,4 @@ def read_configurations(filename):
 script_dir = os.path.dirname(__file__)
 filename = os.path.join(script_dir, "config.txt")
 read_configurations(filename)
-print()
 print("Reading config.txt file..")

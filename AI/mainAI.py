@@ -4,6 +4,7 @@ from AI import Essen, Zutaten, gmail
 class MamaDooAi:
     def __init__(self):
         print("initializing MamaDooAi..")
+        print()
         self.alleGerichte = Essen.alleGerichte
         self.zutatenManager = Zutaten.Manager()
         self.nichtVorhandeneZutate = []

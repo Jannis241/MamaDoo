@@ -1,6 +1,4 @@
-print()
 print("gmail service active: False")
-print()
 
 
 def sendMail(content, subject):

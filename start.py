@@ -1,17 +1,13 @@
 import os
 
-os.system("cls")
+print()
 try:
     import flask
 
-    print()
     print("Flask is already installed")
 except:
     print("Import Module 'Flask' is missing..")
-    print()
-    print()
     print("Installing Flask now..")
-    print()
     try:
         os.system(r"pip install -r requirements.txt")
         print("Installed requirements: successfully")
