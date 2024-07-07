@@ -1,5 +1,6 @@
 import os
 
+print()
 try:
     import flask
 
