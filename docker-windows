@@ -15,3 +15,7 @@ COPY . .
 
 # CMD-Befehl, der deine Anwendung startet (start.py in diesem Fall)
 CMD ["python", "start.py"]
+
+# start webseite --> in dem MamaDoo verzeichnis cmd ausführen:
+#docker build -t mamadoo-windows -f docker-windows .
+#docker run --rm mamadoo-windows
