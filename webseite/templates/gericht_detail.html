@@ -13,6 +13,10 @@
             color: #ffffff;
             text-decoration: none;
             font-size: 14px; /* Schriftgröße anpassen */
+            position: absolute;
+            right: 0px; /* Platzierung rechts */
+            top: 0px; /* Platzierung oben */
+            margin: 10px;
         }
         .back-button:hover {
             background-color: #0056b3; /* Farbe ändern bei Hover */
@@ -20,9 +24,14 @@
             text-decoration: none;
         }
         .navbar-brand {
-            position: absolute; /* Position absolut setzen */
-            left: 50%; /* Horizontal zentrieren */
-            transform: translateX(-50%); /* Zurückverschieben um 50% der eigenen Breite */
+            margin: 0 auto; /* Zentrierung */
+            text-align: center;
+            position: absolute; /* Absolute Positionierung */
+            left: 50%;
+            transform: translateX(-50%); /* Zentrieren mit Translate */
+        }
+        .navbar-toggler {
+            margin-left: 10px; /* Abstand links */
         }
         .centered-content {
             text-align: left; /* Inhalte linksbündig ausrichten */
@@ -36,14 +45,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a href="/confirmation" class="back-button"><span class="arrow">&larr;</span> Zurück</a>
-        <a class="navbar-brand mx-auto" href="#">Mama Doo AI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </a>
+        <a class="navbar-brand" href="#">Mama Doo AI</a>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/reset-and-home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping-list">Einkaufsliste</a>
@@ -70,7 +79,7 @@
                 {% endfor %}
             </ul>
 
-            <form action="/" method="post" class="mt-4">
+            <form action="/reset-and-home" method="post" class="mt-4">
                 <input type="hidden" name="selected_gericht" value="{{ gericht.name }}">
                 <div class="centered-button">
                     <button type="submit" class="btn btn-primary">Für Heute eintragen</button>

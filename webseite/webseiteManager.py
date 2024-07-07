@@ -56,18 +56,9 @@ def reset_selected_gericht():
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    global foods_have, foods_not_have, selected_gericht
-    if request.method == "POST":
-        selected_gericht = request.form.get("selected_gericht", None)
-        return redirect(url_for("home"))
-    global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedBySatt, sortedByGesund
-    mamaBenötigt = "false"
-    sortiereNachSchwierigkeit = "false"
-    sortedByRating = "false"
-    sortedBySatt = "false"
-    sortedByGesund = "false"
-    foods_not_have = []
-    foods_have = []
+    global selected_gericht
+
+    print("selected Gericht: ", selected_gericht)
     return render_template("index.html", selected_gericht=selected_gericht)
 
 
@@ -141,9 +132,14 @@ def confirmation():
     return render_template("submit.html", results=results, numOfLoswerdeGerichte=numOfLoswerdeGerichte, back_url=back_url)
 
 
-@app.route("/reset-and-home")
+@app.route("/reset-and-home", methods=["GET", "POST"])
 def reset_and_home():
+    print()
+    print()
+    print("reset and home")
     global foods_have, foods_not_have, mamaBenötigt, sortiereNachSchwierigkeit, sortedByRating, sortedByGesund, sortedBySatt
+    global selected_gericht
+
     foods_have = []
     foods_not_have = []
     mainAI.MDA.reinit()
@@ -155,8 +151,10 @@ def reset_and_home():
     sortedBySatt = "false"
     sortedByGesund = "false"
 
-    # Clear the 'visitedHome' flag in localStorage
-    return render_template("index.html")
+    if request.method == "POST":
+        selected_gericht = request.form.get("selected_gericht", None)
+
+    return redirect(url_for("home"))
 
 
 @app.route("/shopping-list", methods=["GET", "POST"])

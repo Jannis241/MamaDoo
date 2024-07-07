@@ -12,7 +12,7 @@ Spiegel Ei mit Bratkartoffeln, 3.5, 7, 5, 7, Beides, Nein, Ja, - , eier, kartoff
 
 Chicken Nuggets mit Kartoffelpüree, 9, 10, 6, 6, Beides, Ja, Ja,fufu ist lecker,kartoffeln, chickennuggets
 
-Fischstäbchen / Lachs mit Kartoffelpüree, 7, 9, 5, 7, eher Abends ,Ja, Ja, - ,fischstäbchen, kartoffeln
+Fischstäbchen oder Lachs mit Kartoffelpüree, 7, 9, 5, 7, eher Abends ,Ja, Ja, - ,fischstäbchen, kartoffeln
 
 Fertig Pizza, 10, 10, 1, 2, Beides, Nein, Nein, Notfall, fertigpizza
 
