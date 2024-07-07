@@ -1,16 +1,5 @@
 import os
 
-print()
-print()
-print()
-print()
-print()
-print()
-print()
-print()
-print()
-
-
 try:
     import flask
 
