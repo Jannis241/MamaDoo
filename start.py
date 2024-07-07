@@ -13,6 +13,7 @@ except:
         print("Installed requirements: successfully")
     except:
         raise Exception("Failed to install requirements")
+
 from webseite import webseiteManager
 
 webseiteManager.start()
