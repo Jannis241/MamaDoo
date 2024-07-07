@@ -1,6 +1,6 @@
 import os
 
-print()
+os.system("cls")
 try:
     import flask
 
