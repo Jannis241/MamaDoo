@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, flash, jsonify, redirect, render_template, request, url_for
+from flask import Flask, flash, redirect, render_template, request, url_for
 
 from AI import Essen, mainAI
 
